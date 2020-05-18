@@ -1,4 +1,18 @@
-////
-/// Carousel
-/// @group carousel
-////
+/* position dots in carousel */
+/* .flickity-page-dots {
+    bottom: 8px;
+    .dot {
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+        background-color: #fff;
+        @include transition(transform 350ms);
+        margin: 0 5px;
+    }
+
+    .dot.is-selected {
+        background-color: transparent;
+        border: 2px solid #fff;
+        @include transform(scale(1.5));
+    }
+} */

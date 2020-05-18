@@ -1,11 +1,27 @@
-html {
-    font-size: $root-font-size;
-    font-family: $font-family;
-    margin: 0 auto;
-    text-align: center;
+/// Definições padrão para o website
+* {
+    font-family: 'Metropolis';
 }
 
-p {
-    font-size: $paragraph-font-size;
+.text-blue {
+    color: $colorFonts !important;
+}
+
+.opacity-all {
+    opacity: 1 !important;
+}
+
+@include keyframes(widthTitle) {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.center-title {
+    text-align: center;
 }
 

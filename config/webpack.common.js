@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const fs = require('fs');
 const path = require('path');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 /* Building plugins */
 let plugins = [
   /**

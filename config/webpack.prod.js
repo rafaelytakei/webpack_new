@@ -8,6 +8,9 @@ const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
 const zlib = require('zlib');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
+
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
@@ -44,6 +47,8 @@ module.exports = merge(common, {
       minRatio: 0.8,
       deleteOriginalAssets: false,
     }),
+    new ImageminPlugin(),
+    new ImageminWebpWebpackPlugin(),
   ],
   module: {
     rules: [

@@ -1,5 +1,123 @@
-#index-page {
-    #content-section {
-        @include page-with-centered-img;
+.home-body {
+  .home-btn-effect {
+    background-color: #fff;
+    @include shadow(0 0 20px 2px rgba($color: #000000, $alpha: .5));
+    @include radius(84px);
+    line-height: 1;
+    color: #0081B4;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      @include radius(84px);
+      width: 0;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      @include transform(translateX(-50%));
+      @include transition(all 350ms);
+      background-color: rgba(darken($color: #fff, $amount: 10), .8);
+      z-index: -1;
+      opacity: 0;
+      will-change: contents;
     }
+
+    &:hover {
+      &::before {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+
+  .home-section {
+    display: block;
+
+    background: {
+      repeat: no-repeat;
+      position: bottom;
+      size: 100%;
+    }
+
+    height: calc(100vw * 0.39);
+
+    &:first-of-type {
+      padding-top: 5%;
+    }
+  }
+
+  .home-header {
+    color: #004685;
+    font-size: 3vw;
+    letter-spacing: -0.05em;
+    line-height: 1em;
+    margin-bottom: 0;
+    //font-family: MetropolisExtraBold;
+  }
+
+  .home-btn {
+    white-space: nowrap;
+    color: #004685;
+    font-size: 1.25vw;
+    background-color: #FFFFFF;
+    border: none;
+    box-shadow: inset 0 1px 3px;
+    box-shadow: 0 5px 16px;
+    border-radius: 84px;
+
+  }
+
+  .section-right {
+    text-align: right;
+  }
+
+  .header-right {
+    padding-top: 0px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .residencia-section {
+    margin-bottom: 0;
+  }
+
+  .residencia {
+    color: #00A1AD;
+  }
+
+  .pet {
+    color: #00C487;
+  }
+
+  /* .home-right-header {
+        text-align: right;
+        float: right;
+    } */
+}
+
+.webp {
+  .bg-home-auto {
+    background-image: url($pathImages + '/home-auto2.webp');
+  }
+  .bg-home-residencia {
+    background-image: url($pathImages + '/home-residencia.webp');
+  }
+  .bg-home-pet {
+    background-image: url($pathImages + '/home-pet.webp');
+  }
+}
+
+.no-webp {
+  .bg-home-auto {
+    background-image: url($pathImages + '/home-auto2.png');
+  }
+  .bg-home-residencia {
+    background-image: url($pathImages + '/home-residencia.png');
+  }
+  .bg-home-pet {
+    background-image: url($pathImages + '/home-pet.png');
+  }
 }

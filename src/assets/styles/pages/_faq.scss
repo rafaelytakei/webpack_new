@@ -1,0 +1,32 @@
+.accordion{
+    .bg-btn{
+        background-color: $bgDecoration;
+        width: 68px;
+    }
+
+    @extend .text-blue;
+
+    .btn-link{
+        color: $colorFonts;
+        text-decoration: none;
+        img {
+            @include transition(all 350ms);
+        }
+        &[aria-expanded="true"]{
+            img {
+                @include transform(rotate(90deg));
+            }
+        }
+    }
+
+    .border-content{
+        border: 2px solid $bgDecoration;
+        &.border-no-top{
+            border-top: 0;
+        }
+    }
+    .max-width-faq{
+        max-width: 735px;
+        width: 100%;
+    }
+}

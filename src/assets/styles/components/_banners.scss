@@ -1,0 +1,122 @@
+/* .banners {
+    min-height: 310px;
+    width: 100%;
+    position: relative;
+
+    background: {
+        repeat: no-repeat;
+        size: 100%;
+    };
+
+    @include shadow(inset 0 0 60px -5px rgba(#000, .5));
+}
+ */
+
+ /* 
+.banners-carousel {
+
+    .banner-home {
+        @for $i from 1 to 4 {
+            &:nth-child(#{$i}) {
+                @if $i <=9 {
+                    background: {
+                        image: url($pathBanner+'/home_0' + $i + '.png');
+                    };
+                }
+
+                @else {
+                    background: {
+                        image: url($pathBanner+'/home_' + $i + '.png');
+                    };
+                }
+
+            }
+        }
+    }
+
+    .banner-assistencia-auto {
+        &:nth-child(1) {
+            background: {
+                image: url($pathBanner+'/assistencia-auto_01.png');
+            };
+        }
+    }
+
+    .banner-assistencia-residencial {
+        &:nth-child(1) {
+            background: {
+                image: url($pathBanner+'/assistencia-residencial_01.png');
+            };
+        }
+    }
+
+    .banner-assistencia-pet {
+        &:nth-child(1) {
+            background: {
+                image: url($pathBanner+'/assistencia-pet_01.png');
+            };
+        }
+    }
+
+    .banner-assistencia-faq{
+        &:nth-child(1) {
+            background: {
+                image: url($pathBanner+'/faq_01.png');
+            };
+        }
+    }
+
+    .bg-decoration {
+        background-color: $bgDecoration;
+        font-weight: bold;
+        padding: 2px 5px;
+        @include radius(4px);
+    }
+
+    .description-banner {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        @include transform(translateY(-50%));
+
+        .w-description {
+            max-width: 375px;
+            font-size: 30px;
+        }
+    }
+
+    .btn-description {
+        padding: 17px 20px;
+        background-color: #fff;
+        @include shadow(0 0 20px 2px rgba($color: #000000, $alpha: .5));
+        @include radius(84px);
+        line-height: 1;
+        color: $btnBannerColor;
+        font-weight: bold;
+        position: relative;
+        z-index: 1;
+        &::before{
+            content: "";
+            position: absolute;
+            @include radius(84px);
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            @include transform(translateX(-50%));
+            @include transition(all 350ms);
+            background-color: rgba(darken($color: #fff, $amount: 10), .8);
+            z-index: -1;
+            opacity: 0;
+            will-change: contents;
+        }
+        &:hover{
+            &::before{
+                width: 100%;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+ */

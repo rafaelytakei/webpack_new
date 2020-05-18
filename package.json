@@ -6,8 +6,8 @@
   "author": "Rafael Takei <rafael@suthub.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js"
+    "start": "(node config/webp.js && cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js)",
+    "build": "(node config/webp.js && cross-env NODE_ENV=production webpack --config config/webpack.prod.js)"
   },
   "keywords": [
     "webpack",
@@ -34,6 +34,11 @@
     "fs": "0.0.1-security",
     "glob": "^7.1.6",
     "html-webpack-plugin": "^4.3.0",
+    "imagemin": "^7.0.1",
+    "imagemin-keep-folder": "^5.3.2",
+    "imagemin-webp": "^5.1.0",
+    "imagemin-webp-webpack-plugin": "^3.3.1",
+    "imagemin-webpack-plugin": "^2.4.2",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
