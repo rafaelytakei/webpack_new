@@ -1,0 +1,16 @@
+#animation-page {
+    #content-section {
+        @include page-with-centered-img;
+        #animation-div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40vh;
+            width: 70vw;
+            border: 2px dotted hsl(157, 80%, 35%);
+            button {
+                font-size: 30px;
+            }
+        }
+    }
+}

@@ -15,7 +15,9 @@ Webpack é um bundler modular para aplicações JS. Basicamente, ao processar um
 ### Features incluídas
 
 #### [PostCSS](https://postcss.org/)
-Ferramenta que manipula o CSS via JS. Entre as suas funções, há um auto-prefixer, que por exemplo, transforma `box-shadow: 1px 1px black;` em:
+Ferramenta que manipula o CSS via JS. Entre as suas funções, há um auto-prefixer, que por exemplo, transforma 
+`box-shadow: 1px 1px black;`
+em:
 ```
 box-shadow: 1px 1px black;
 -webkit-box-shadow: 1px 1px black;
@@ -162,6 +164,8 @@ Ao executar `npm start`:
 ### Random Stuff
 
 -  **[Slick](https://kenwheeler.github.io/slick/)**: Criação de carousel, bem simples de utilizar e diversas funcionalidades
+
+-  **[Pretty Checkbox](https://github.com/lokesh-coder/pretty-checkbox)**: Permite customizar checkboxes de diversas maneiras.
 
 -  **[Voca](https://vocajs.com/)**: Lib para manipulação de strings, bem mais clean em geral do que funções nativas do JS
 
