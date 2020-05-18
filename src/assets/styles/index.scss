@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url(../fonts/Roboto-Regular.ttf)
+}
+
+@import 'variables';
+
+html {
+  font-size: $root-font-size;
+  font-family: $font-family;
+  max-width: $page-width;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  text-shadow: 2px 2px #ff0000;
+}
+p {
+  font-size: $paragraph-font-size;
+  text-shadow: red($color: #000000);
+}
+
+.shadow {
+  box-shadow: 1px 1px #ff0000;
+}
