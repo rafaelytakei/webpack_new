@@ -1,8 +1,3 @@
-
-  
-
-  
-
 # Suthub Webpack Boilerplate
 
 ## Sobre
@@ -15,7 +10,7 @@ Webpack é um bundler modular para aplicações JS. Basicamente, ao processar um
 ### Features incluídas
 
 #### [PostCSS](https://postcss.org/)
-Ferramenta que manipula o CSS via JS. Entre as suas funções, há um auto-prefixer, que por exemplo, compila
+Ferramenta que manipula o CSS via JS, utilizando diversos plugins. Entre seus principais plugins, existe o `autoprefixer`, que adiciona prefixos nas propriedades quando necessários para compatibilidade cross-browser, por exemplo, compila
 
 `box-shadow: 1px 1px black;`
 
@@ -181,4 +176,4 @@ Ao executar `npm start`:
 - Code splitting
   - Cada página deverá ter seu próprio .js (com nome igual ao .html que o corresponde)
   - Um arquivo `functions.js` usado por vários outros  .js, por exemplo, terá que ser adaptado para utilizar módulos (exportação e importação conforme necessário)
-- WIP
+- CSS precisa ser passado pra SCSS. Para isso basta copiar todo o conteúdo do CSS para dentro do main.scss, porém, é recomendado dividir o código para facilitar alterações futuras.
