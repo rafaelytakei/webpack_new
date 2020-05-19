@@ -38,7 +38,7 @@ $(() => {
             var trThead = $('<tr>');
             _self.find('thead').append(trThead);
 
-            info.forEach(function (val: any) {
+            info.forEach(function (val) {
                 trThead.append(
                     '<th scope="col">' + val + '</th>'
                 );
@@ -47,7 +47,7 @@ $(() => {
             trThead.find('th:last').addClass('rounded-right-top');
 
             // -- LISTAR AS ASSISTENCIAS
-            assistencias.forEach(function (val: any, idx: number) {
+            assistencias.forEach(function (val, idx) {
                 var trBody = $('<tr/>');
 
                 if (idx === 0) {
@@ -85,7 +85,7 @@ $(() => {
             var trThead = $('<tr>');
             _self.find('thead').append(trThead);
 
-            info.forEach(function (val: any) {
+            info.forEach(function (val) {
                 trThead.append(
                     '<th scope="col">' + val + '</th>'
                 );
@@ -94,7 +94,7 @@ $(() => {
             trThead.find('th:last').addClass('rounded-right-top');
 
             // -- LISTAR AS ASSISTENCIAS
-            assistencias.forEach(function (val: any, idx: number) {
+            assistencias.forEach(function (val, idx) {
                 var trBody = $('<tr/>');
 
                 if (idx === 0) {
@@ -145,7 +145,7 @@ $(window).resize(function() {
                 var trThead = $('<tr>');
                 _self.find('thead').append(trThead);
 
-                info.forEach(function (val: any) {
+                info.forEach(function (val) {
                     trThead.append(
                         '<th scope="col">' + val + '</th>'
                     );
@@ -154,7 +154,7 @@ $(window).resize(function() {
                 trThead.find('th:last').addClass('rounded-right-top');
 
                 // -- LISTAR AS ASSISTENCIAS
-                assistencias.forEach(function (val: any, idx: number) {
+                assistencias.forEach(function (val, idx) {
                     var trBody = $('<tr/>');
 
                     if (idx === 0) {
@@ -197,7 +197,7 @@ $(window).resize(function() {
                 var trThead = $('<tr>');
                 _self.find('thead').append(trThead);
     
-                info.forEach(function (val:any) {
+                info.forEach(function (val) {
                     trThead.append(
                         '<th scope="col">' + val + '</th>'
                     );
@@ -206,7 +206,7 @@ $(window).resize(function() {
                 trThead.find('th:last').addClass('rounded-right-top');
     
                 // -- LISTAR AS ASSISTENCIAS
-                assistencias.forEach(function (val:any, idx:number) {
+                assistencias.forEach(function (val, idx) {
                     var trBody = $('<tr/>');
     
                     if (idx === 0) {
