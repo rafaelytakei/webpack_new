@@ -1,0 +1,259 @@
+////
+/// @group Assistências
+////
+
+.assistencia-banner {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: calc(100vw*0.74);
+        background: {
+            repeat: no-repeat;
+            position: bottom;
+            size: cover;
+        }
+    
+    
+    .assistencia-banner-text {
+        font-family: Metropolis;
+        font-size: 5vw;
+        color: white;
+        letter-spacing: 0em;
+        line-height: 1.5em;
+        vertical-align: middle;
+        
+        .text-green-bg {
+            background-color: #00C487;
+            @include radius(4px);
+        }
+        .text-blue-bg {
+            background-color: #004685;
+            @include radius(4px);
+        }
+    }
+
+    .assistencia-banner-btn {
+        white-space: nowrap;
+        color: #0081B4;
+        font-size: 3vw;
+        background-color: #FFFFFF;
+        border: none;
+        box-shadow: inset 0 1px 3px;
+        box-shadow: 0 5px 16px;
+        border-radius: 84px;
+    }
+
+    .btn-description {
+        background-color: #fff;
+        @include shadow(0 0 20px 2px rgba($color: #000000, $alpha: .5));
+        @include radius(84px);
+        line-height: 1;
+        color: #0081B4;
+        font-weight: 500;
+        position: relative;
+        z-index: 1;
+        &::before{
+            content: "";
+            position: absolute;
+            @include radius(84px);
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            @include transform(translateX(-50%));
+            @include transition(all 350ms);
+            background-color: rgba(darken($color: #fff, $amount: 10), .8);
+            z-index: -1;
+            opacity: 0;
+            will-change: contents;
+        }
+        &:hover{
+            &::before{
+                width: 100%;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.bg-como-funciona {
+    background-color: $colorFonts;
+
+    .title-anchor {
+        color: #fff !important;
+    }
+
+    .card-icones {
+        min-height: 170px;
+        width: 100%;
+        @include linear-gradient(to left, $bgDecoration, $colorFonts);
+        @include radius(0 25px 10px 0);
+        position: relative;
+        line-height: 1.2;
+
+        .img-icone {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            @include transform(translateY(-50%));
+            opacity: .2;
+        }
+    }
+
+    .card-icones-right {
+        min-height: 170px;
+        width: 100%;
+        text-align: right;
+        @include linear-gradient(to right, $bgDecoration, $colorFonts);
+        @include radius(25px 0 0 10px);
+        position: relative;
+        line-height: 1.2;
+
+        .img-icone {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            @include transform(translateY(-50%));
+            opacity: .2;
+        }
+    }
+}
+
+.bg-city {
+    background: {
+        image: url($pathImages + '/bg-form.png');
+        repeat: repeat-x;
+        position: bottom;
+        size: 100%;
+    };
+}
+
+.title-anchor {
+    @extend .text-blue;
+    display: inline-block;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        @include animation(widthTitle 350ms ease-in);
+        left: 0;
+        height: 6px;
+        @include linear-gradient(to left, $bgDecoration, $colorFonts);
+    }
+}
+
+.card-icones {
+    @extend .text-blue;
+
+    .card-title {
+        font-size: 30px;
+        line-height: 1;
+
+        strong {
+            color: $bgDecoration;
+        }
+    }
+}
+
+.table-coberturas {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.table {
+    &.border-blue td {
+        border: 2px solid $colorFonts;
+        vertical-align: middle;
+    }
+
+    .big-title {
+        font-size: 30px;
+    }
+
+    color: $colorFonts;
+
+    .thead-blue {
+        th {
+            background-color: $colorFonts;
+            border-color: transparent;
+            color: #fff;
+        }
+
+        .rounded-left-top {
+            @include radius(10px 0 0 0);
+        }
+
+        .rounded-right-top {
+            @include radius(0 10px 0 0);
+        }
+    }
+    .tfoot-blue {
+        td {
+            background-color: $colorFonts;
+            border-color: transparent;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .rounded-bottom {
+            @include radius(0 0 10px 10px);
+        }
+    }
+}
+
+.bg-assistencia-auto {
+    background-image: url($pathImages + '/banners/assistencia-auto_01.png');
+}
+.bg-assistencia-pet {
+    background-image: url($pathImages + '/banners/assistencia-pet_01.png');
+}
+.bg-assistencia-residencial {
+    background-image: url($pathImages + '/banners/assistencia-residencial_01.png');
+}
+.bg-faq {
+    background-image: url($pathImages + '/banners/faq_01.png');
+}
+
+@media (min-width: 991.9px) {
+    .assistencia-banner {
+        height: calc(100vw*0.25);
+        text-align: left;
+        .assistencia-banner-text {
+            font-size: 2.3vw;
+            letter-spacing: 0em;
+            line-height: 2.6vw;
+            .text-blue-bg {
+                background-color: transparent;
+            }
+        }
+        .assistencia-banner-btn {
+            font-size: 1.25vw;
+        }
+    }
+    .center-title {
+        text-align: left;
+    }
+        
+    .bg-como-funciona {
+        .card-icones-right {
+            @include linear-gradient(to left, $bgDecoration, $colorFonts);
+            @include radius(0 25px 10px 0);
+            text-align: left !important;
+            .img-icone {
+                left: auto !important;
+                right: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1900px) {
+    .home-btn {
+        margin-top: 1.1rem;
+    }
+}

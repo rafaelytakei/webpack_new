@@ -1,25 +1,77 @@
+/// Apply transition to all browsers
+/// @param {any} $val - Value of the transition
 
-@mixin page-with-centered-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 80vh;
-    #main-image-div {
-        #index-logo {
-            width: 50vw;
-        }
-        #suthub-logo {
-            margin-right: 2rem;
-            width: 10vw;
-            opacity: 0;
-        }
-    }
-    #buttons-div {
-        width: 100%;
+@mixin transition($val) {
+    @include allBrowser(transition, $val);
+}
 
-        button {
-            width: 100%;
-        }
+/// Apply transform to all browsers
+/// @param {any} $val - Value of the transform
+
+@mixin transform($val) {
+    @include allBrowser(transform, $val);
+}
+
+/// Apply radius to all browsers
+/// @param {any} $val - Value of the radius
+
+@mixin radius($val) {
+    @include allBrowser(border-radius, $val);
+}
+
+/// Apply shadow to all browsers
+/// @param {any} $val - Value of the shadow
+
+@mixin shadow($val) {
+    @include allBrowser(box-shadow, $val);
+}
+
+/// Apply linear-gradient to all browsers
+/// @param {any} $direction - Direction of the gradient
+/// @param {any} $color-stops - Gradient colors
+
+@mixin linear-gradient($direction, $color-stops...) {
+
+    @if is-direction($direction)==false {
+        $color-stops: $direction, $color-stops;
+        $direction: 180deg;
     }
+
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+}
+
+/// Apply animation to all browsers
+/// @param {any} $val - Value of the animation
+
+@mixin animation($val) {
+    @include allBrowser(animation,$val);
+}
+
+/// Apply a value to all browsers
+/// @param {any} $method - Attribute to be modified
+/// @param {any} $val - Value to be associated to the attribute
+
+@mixin allBrowser($method, $val) {
+    #{$method}: $val;
+    -webkit-#{$method}: $val;
+    -moz-#{$method}: $val;
+}
+
+/// Apply keyframes to all browsers
+/// @param {any} $name - Value to be attached to keyframes
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content; 
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    } 
 }

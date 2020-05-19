@@ -7,7 +7,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
-const zlib = require('zlib');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
+
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
@@ -32,18 +33,9 @@ module.exports = merge(common, {
     new PurgecssPlugin({
       paths: glob.sync(`${paths.src}/**/*`,  { nodir: true })
     }),
-    new CompressionPlugin({
-      filename: '[path].br[query]',
-      algorithm: 'brotliCompress',
-      test: /\.(js|css|html|svg)$/,
-      compressionOptions: {
-        // zlib’s `level` option matches Brotli’s `BROTLI_PARAM_QUALITY` option.
-        level: 11,
-      },
-      threshold: 10240,
-      minRatio: 0.8,
-      deleteOriginalAssets: false,
-    }),
+    new CompressionPlugin(),
+    /* new ImageminPlugin(), */
+    new ImageminWebpWebpackPlugin()
   ],
   module: {
     rules: [
@@ -78,14 +70,14 @@ module.exports = merge(common, {
     // This breaks apart commonly shared deps (react, semantic ui, etc) into one shared bundle. React, etc
     // won't change as often as the app code, so this chunk can be cached separately from app code.
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/](react|react-dom|lodash)[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/](react|react-dom|lodash)[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
         },
       },
-    },
   },
   performance: {
     hints: false,

@@ -1,8 +1,16 @@
-////
-/// Sass Variables
-/// @group sass-variables
-////
+/// Path para pasta de imagens
+/// @group Paths
+$pathImages: '../images';
+/// Path para pasta de banners
+/// @group Paths
+$pathBanner: $pathImages+'/banners';
+/// Path para pasta de ícones
+/// @group Paths
+$pathIcones: $pathImages+'/icones';
 
-$root-font-size: 1rem;
-$font-family: 'Roboto', sans-serif;
-$paragraph-font-size: 1.6rem;
+/// @group Colors
+$bgDecoration: #00C487;
+/// @group Colors
+$btnBannerColor: #0081B4;
+/// @group Colors
+$colorFonts: #004685;

@@ -1,0 +1,74 @@
+.logo-menu{
+    width: 117px;
+}
+.logo-realiza {
+    width: 55px;
+}
+.nav-link {
+    @include transition(all 100ms);
+    color: $colorFonts!important;
+    &.active {
+        font-weight: bold;
+    }
+    &:hover{
+        color: $bgDecoration !important;
+    }
+}
+
+// MENU MOBILE
+#openMobile{
+    font-size: 1.5em;
+}
+
+.webp {
+  .navbar-mobile {
+    background-image: url($pathImages + '/bg-form.webp');
+  }
+}
+.no-webp {
+  .navbar-mobile {
+    background-image: url($pathImages + '/bg-form.webp');
+  }
+}
+.navbar-mobile{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 2;
+    background: {
+        color: $colorFonts;
+        position: bottom;
+        repeat: repeat-x;
+        size: 200%;
+    };
+    width: 100%;
+    height: 100%;
+    @include transition(all 350ms);
+    .nav-link {
+        color: #fff!important;
+    }
+    .iconeCloseMobile{
+        line-height: 1;
+        color: #fff;
+        font-size: 4em;
+        width: 40px;
+        height: 40px;
+        font-weight: lighter;
+        text-decoration: none;
+    }
+}
+
+.nav-shadow {
+    box-shadow: 0 1px 40px;
+    background-color: black;
+}
+
+.ul-menu{
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    width: 90%;
+        .li-menu {
+            display: list-item;
+        }
+}
