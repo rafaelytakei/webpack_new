@@ -6,11 +6,13 @@ import 'popper.js';
 import 'bootstrap';
 import $ from 'jquery';
 import buildNavBar from './modules/navbar';
+import {getURLParameters} from './modules/functions';
 
 
 $(() => {
     buildNavBar();
-    
+    console.log('dsada');
+    console.log(getURLParameters());
     $('body').append('<section id="content-section" class="container-fluid"></section>');
     $('body').attr('id', 'index-page');
     $('#content-section').append('<div id="main-image-div"></div>');
