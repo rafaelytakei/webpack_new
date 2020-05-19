@@ -39,7 +39,7 @@ for(const file of jsFiles) {
             template: paths.src + '/template.html', // template file
             filename: path.basename(file, '.js') + '.html', // output file
             chunks: [path.basename(file, '.js')],
-            scriptLoading: 'defer'
+            /* scriptLoading: 'defer' */
         }
         /* Função para checar se há um template para a entry, se não houver as opções serão padrão */
         let templatePath = paths.src + '/' + path.basename(file,'.js') + '.html';
@@ -48,7 +48,7 @@ for(const file of jsFiles) {
                 template: paths.src + '/' + path.basename(file, '.js') + '.html',
                 filename: path.basename(file, '.js') + '.html', // output file
                 chunks: [path.basename(file, '.js')],
-                scriptLoading: 'defer'
+                /* scriptLoading: 'defer' */
             }
         }
         plugins.push(
@@ -73,7 +73,7 @@ module.exports = {
   output: {
     path: paths.build,
     filename: '[name].bundle.js',
-    publicPath: '/',
+    publicPath: './',
   },
 
   /**
