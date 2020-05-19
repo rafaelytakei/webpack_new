@@ -15,7 +15,7 @@ Webpack é um bundler modular para aplicações JS. Basicamente, ao processar um
 ### Features incluídas
 
 #### [PostCSS](https://postcss.org/)
-Ferramenta que manipula o CSS via JS. Entre as suas funções, há um auto-prefixer, que por exemplo, compila
+Ferramenta que manipula o CSS via JS, utilizando diversos plugins. Entre seus principais plugins, existe o `autoprefixer`, que adiciona prefixos nas propriedades quando necessários para compatibilidade cross-browser, por exemplo, compila
 
 `box-shadow: 1px 1px black;`
 
