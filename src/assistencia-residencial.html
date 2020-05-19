@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161488294-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-161488294-1');
+    </script>
+    <script>
+      /*! modernizr 3.6.0 (Custom Build) | MIT *
+       * https://modernizr.com/download/?-webp-setclasses !*/
+      ! function (e, n, A) {
+        function o(e, n) {
+          return typeof e === n
+        }
+  
+        function t() {
+          var e, n, A, t, a, i, r;
+          for (var l in s)
+            if (s.hasOwnProperty(l)) {
+              if (e = [], n = s[l], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options
+                  .aliases.length))
+                for (A = 0; A < n.options.aliases.length; A++) e.push(n.options.aliases[A].toLowerCase());
+              for (t = o(n.fn, "function") ? n.fn() : n.fn, a = 0; a < e.length; a++) i = e[a], r = i.split("."), 1 === r
+                .length ? Modernizr[r[0]] = t : (!Modernizr[r[0]] || Modernizr[r[0]] instanceof Boolean || (Modernizr[r[
+                  0]] = new Boolean(Modernizr[r[0]])), Modernizr[r[0]][r[1]] = t), f.push((t ? "" : "no-") + r.join("-"))
+            }
+        }
+  
+        function a(e) {
+          var n = u.className,
+            A = Modernizr._config.classPrefix || "";
+          if (c && (n = n.baseVal), Modernizr._config.enableJSClass) {
+            var o = new RegExp("(^|\\s)" + A + "no-js(\\s|$)");
+            n = n.replace(o, "$1" + A + "js$2")
+          }
+          Modernizr._config.enableClasses && (n += " " + A + e.join(" " + A), c ? u.className.baseVal = n : u.className =
+            n)
+        }
+  
+        function i(e, n) {
+          if ("object" == typeof e)
+            for (var A in e) l(e, A) && i(A, e[A]);
+          else {
+            e = e.toLowerCase();
+            var o = e.split("."),
+              t = Modernizr[o[0]];
+            if (2 == o.length && (t = t[o[1]]), "undefined" != typeof t) return Modernizr;
+            n = "function" == typeof n ? n() : n, 1 == o.length ? Modernizr[o[0]] = n : (!Modernizr[o[0]] || Modernizr[o[
+              0]] instanceof Boolean || (Modernizr[o[0]] = new Boolean(Modernizr[o[0]])), Modernizr[o[0]][o[1]] = n), a(
+              [(n && 0 != n ? "" : "no-") + o.join("-")]), Modernizr._trigger(e, n)
+          }
+          return Modernizr
+        }
+        var s = [],
+          r = {
+            _version: "3.6.0",
+            _config: {
+              classPrefix: "",
+              enableClasses: !0,
+              enableJSClass: !0,
+              usePrefixes: !0
+            },
+            _q: [],
+            on: function (e, n) {
+              var A = this;
+              setTimeout(function () {
+                n(A[e])
+              }, 0)
+            },
+            addTest: function (e, n, A) {
+              s.push({
+                name: e,
+                fn: n,
+                options: A
+              })
+            },
+            addAsyncTest: function (e) {
+              s.push({
+                name: null,
+                fn: e
+              })
+            }
+          },
+          Modernizr = function () {};
+        Modernizr.prototype = r, Modernizr = new Modernizr;
+        var l, f = [],
+          u = n.documentElement,
+          c = "svg" === u.nodeName.toLowerCase();
+        ! function () {
+          var e = {}.hasOwnProperty;
+          l = o(e, "undefined") || o(e.call, "undefined") ? function (e, n) {
+            return n in e && o(e.constructor.prototype[n], "undefined")
+          } : function (n, A) {
+            return e.call(n, A)
+          }
+        }(), r._l = {}, r.on = function (e, n) {
+          this._l[e] || (this._l[e] = []), this._l[e].push(n), Modernizr.hasOwnProperty(e) && setTimeout(function () {
+            Modernizr._trigger(e, Modernizr[e])
+          }, 0)
+        }, r._trigger = function (e, n) {
+          if (this._l[e]) {
+            var A = this._l[e];
+            setTimeout(function () {
+              var e, o;
+              for (e = 0; e < A.length; e++)(o = A[e])(n)
+            }, 0), delete this._l[e]
+          }
+        }, Modernizr._q.push(function () {
+          r.addTest = i
+        }), Modernizr.addAsyncTest(function () {
+          function e(e, n, A) {
+            function o(n) {
+              var o = n && "load" === n.type ? 1 == t.width : !1,
+                a = "webp" === e;
+              i(e, a && o ? new Boolean(o) : o), A && A(n)
+            }
+            var t = new Image;
+            t.onerror = o, t.onload = o, t.src = n
+          }
+          var n = [{
+              uri: "data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=",
+              name: "webp"
+            }, {
+              uri: "data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==",
+              name: "webp.alpha"
+            }, {
+              uri: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA",
+              name: "webp.animation"
+            }, {
+              uri: "data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=",
+              name: "webp.lossless"
+            }],
+            A = n.shift();
+          e(A.name, A.uri, function (A) {
+            if (A && "load" === A.type)
+              for (var o = 0; o < n.length; o++) e(n[o].name, n[o].uri)
+          })
+        }), t(), a(f), delete r.addTest, delete r.addAsyncTest;
+        for (var p = 0; p < Modernizr._q.length; p++) Modernizr._q[p]();
+        e.Modernizr = Modernizr
+      }(window, document);
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assistência Residencial</title>
+</head>
+
+<body>
+    <div id="dynamic-menu"></div>
+    <div id="page-content">
+      <section class="assistencia-banner bg-assistencia-residencial">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5 col-12 assistencia-banner-text">
+                    <span class="text-green-bg px-2 py-1 ">
+                        Facilidade e economia
+                    </span><br>
+                    <span class="text-blue-bg px-2 py-1">
+                        para os imprevistos do 
+                    </span><br>
+                    <span class="text-blue-bg px-2 py-1">
+                        seu dia a dia.
+                    </span>
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+            <div class ="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4">
+                    <a href="https://alper.surehub.com.br/checkout.html?p=6e46a0fe-29ef-439a-8f63-6980af7105a2&o=93d60b2d-fb37-43df-b98a-fef9f62b9bbd" target="_blank" class="btn text-uppercase btn-description mt-2 py-3 px-4">quero contratar</a>
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-city content-assistencia-residencial pb-5">
+        <div class="pt-5" id="ancora-0">
+            <div class="container">
+                <div class="d-block mb-5 center-title">
+                    <h2 class="text-uppercase title-anchor font-weight-bold pb-1 pr-lg-5 mb-3">vantagens</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 card-icones text-center mb-3">
+                        <img src="./assets/images/icones/assistencia-residencial_chaveiro.png" alt="" />
+                        <div class="d-block card-title mt-3">
+                            Chaveiro <br class="d-none d-lg-block"><strong>emergencial:</strong>
+                        </div>
+                        <div class="d-block">
+                            Perdeu ou quebrou sua chave? Não precisa mais se desesperar.
+                        </div>
+                    </div>
+                    <div class="col-lg-4 card-icones text-center mb-3">
+                        <img src="'+iconHospedagem+'" alt="" />
+                        <div class="d-block card-title mt-3">
+                            <strong>Hospedagem:</strong>
+                        </div>
+                        <div class="d-block">
+                            4 diárias, para até 5 pessoas em 
+                            caso de imprevistos domiciliar.
+                        </div>
+                    </div>
+                    <div class="col-lg-4 card-icones text-center mb-3">
+                        <img src="'+iconAntenas+'" alt="" />
+                        <div class="d-block card-title mt-3">
+                            Fixação de <br class="d-none d-lg-block"><strong>antenas:</strong>
+                        </div>
+                        <div class="d-block">
+                            Com até uma utilização na vigência.
+                        </div>
+                    </div>
+                </div>
+                <div class="my-5 text-center">
+                    <a href="#ancora-2" class="bnt btn-outros btn-ancora text-uppercase font-weight-bold text-white">
+                        CONFIRA TODAS AS VANTAGENS AQUI
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="como-funciona-ancora bg-como-funciona py-5" id="ancora-1">
+            <div class="container">
+                <div class="d-block mb-5">
+                    <h2 class="text-uppercase title-anchor font-weight-bold pb-1 pr-lg-5 mb-3">como funciona</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card-icones py-2 mb-3">
+                            <div class="w-description text-white pl-5">
+                                <h2 class="font-weight-bold">01</h2>
+                                <h5 class="font-weight-bold">Escolha o plano:</h5>
+                                <p class="mb-0">
+                                    Verifique o plano e serviços<br class="d-none d-lg-block"> disponíveis para suas 
+                                    necessidades.
+                                </p>
+                            </div>
+                            <img src="'+iconCasa+'" alt=""
+                                class="img-icone opacity-all" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card-icones-right py-2 mb-3">
+                            <div class="w-description text-white pl-lg-5 pr-lg-3 pr-5 pl-3">
+                                <h2 class="font-weight-bold">02</h2>
+                                <h5 class="font-weight-bold">Faça o seu cadastro:</h5>
+                                <p class="pr-lg-5 pl-5 mb-0 pl-lg-0">
+                                    Preencha o formulário de forma simples, rápida e segura. E terá a comodidade do 
+                                    Plano Exclusivo debitado mensalmente em seu cartão de crédito.
+                                </p>
+                            </div>
+                            <img src="'+iconPlanilha+'" alt=""
+                                class="img-icone opacity-all" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card-icones py-2 mb-3">
+                            <div class="w-description text-white pl-5 pr-3">
+                                <h2 class="font-weight-bold">03</h2>
+                                <h5 class="font-weight-bold">Como usar:</h5>
+                                <p class="pr-5 mb-0">
+                                    Para ser atendido você deverá obrigatoriamente ligar para a central de atendimento 
+                                    da 0800 718 0108 e terá toda orientação em como proceder.
+                                </p>
+                            </div>
+                            <img src="'+iconAtendimento+'" alt=""
+                                class="img-icone opacity-all" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card-icones-right py-2 mb-3">
+                            <div class="w-description text-white pl-lg-5 pr-lg-3 pr-5 pl-3">
+                                <h2 class="font-weight-bold">04</h2>
+                                <h5 class="font-weight-bold">Rede Credenciada:</h5>
+                                <p class="pl-5 mb-0 pl-lg-0">
+                                    A Assistência Residencial conta com uma rede de profissionais e serviços credenciados em 
+                                    todo território nacional
+                                </p>
+                            </div>
+                            <img src="'+iconTrabalho+'" alt=""
+                                class="img-icone opacity-all" />
+                        </div>
+                    </div>
+                </div>
+                <h5 class="text-white font-weight-bold text-center mt-5">Estamos presentes sempre que você precisar!
+                </h5>
+            </div>
+        </div>
+        <div class="coberturas-planos py-5" id="ancora-2">
+            <div class="container">
+                <div class="d-block mb-5 center-title">
+                    <h2 class="text-uppercase title-anchor font-weight-bold pb-1 pr-lg-5 mb-3">COBERTURA E PLANO</h2>
+                </div>
+                <div class="table-coberturas">
+                    <table class="table border-blue text-center" data-table-for="residencial">
+                        <thead class="thead-blue text-uppercase"></thead>
+                        <tbody></tbody>
+                        <tfoot class="text-uppercase tfoot-blue"></tfoot>
+                    </table>
+                </div>
+                <div class="my-5 text-center">
+                    <a href="https://alper.surehub.com.br/checkout.html?p=6e46a0fe-29ef-439a-8f63-6980af7105a2&o=93d60b2d-fb37-43df-b98a-fef9f62b9bbd" target="_blank" class="bnt btn-outros text-uppercase font-weight-bold text-white">
+                        quero contratar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    
+    <div id="footer"></div>
+</body>
+
+</html>
