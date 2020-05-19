@@ -1,8 +1,3 @@
-
-  
-
-  
-
 # Suthub Webpack Boilerplate
 
 ## Sobre
@@ -181,4 +176,4 @@ Ao executar `npm start`:
 - Code splitting
   - Cada página deverá ter seu próprio .js (com nome igual ao .html que o corresponde)
   - Um arquivo `functions.js` usado por vários outros  .js, por exemplo, terá que ser adaptado para utilizar módulos (exportação e importação conforme necessário)
-- WIP
+- CSS precisa ser passado pra SCSS. Para isso basta copiar todo o conteúdo do CSS para dentro do main.scss, porém, é recomendado dividir o código para facilitar alterações futuras.
