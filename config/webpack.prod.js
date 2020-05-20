@@ -9,6 +9,7 @@ const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
 const zlib = require('zlib');
 const path = require('path');
+
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
