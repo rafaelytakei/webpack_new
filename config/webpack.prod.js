@@ -8,12 +8,13 @@ const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
 const zlib = require('zlib');
+const path = require('path');
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
   output: {
     path: paths.build,
-    publicPath: './',
+    publicPath: '../',
     filename: '[name].[contenthash].bundle.js',
   },
   plugins: [
@@ -26,13 +27,13 @@ module.exports = merge(common, {
      * They cannot be used together in the same config.
      */
     new MiniCssExtractPlugin({
-      filename: '../styles/[name].[contenthash].css',
+      filename: '[name].[contenthash].css',
       chunkFilename: '[name].css',
     }),
     new PurgecssPlugin({
       paths: glob.sync(`${paths.src}/**/*`,  { nodir: true })
     }),
-    new CompressionPlugin({
+    /* new CompressionPlugin({
       filename: '[path].br[query]',
       algorithm: 'brotliCompress',
       test: /\.(js|css|html|svg)$/,
@@ -43,7 +44,7 @@ module.exports = merge(common, {
       threshold: 10240,
       minRatio: 0.8,
       deleteOriginalAssets: false,
-    }),
+    }), */
   ],
   module: {
     rules: [
