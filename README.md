@@ -170,6 +170,22 @@ Ao executar `npm start`:
 
 -  **[Animate On Scroll](https://michalsnik.github.io/aos/)**: Gera animações (ex. fadeIn, fadeOut) conforme o usuário vai dando scroll pela página
 
+## Libs já instaladas
+
+- **[jQuery](https://jquery.com/)**
+
+- **[Bootstrap](https://getbootstrap.com/)**
+
+  - **[PopperJS](https://popper.js.org/)** - Dependência do Bootstrap
+
+- **[Font Awesome Pro](https://fontawesome.com/)**
+
+- **[TSFV](https://github.com/trevorr/tsfv)**
+
+- **[Cleave.js](https://nosir.github.io/cleave.js/)**
+
+-  **[Anime.js](https://animejs.com/)**
+
 ## Adaptando um projeto já existente ao webpack
 
 - Checar se todas as libs utilizadas tem suporte para módulos. Caso não houver, será necessário procurar por libs alternativas (A grande maioria das libs atuais já tem suporte)
@@ -183,3 +199,4 @@ Ao executar `npm start`:
 - 21/05
   - Add plugin `html-loader` para carregar imagens direto do .html
   - Add font-awesome-pro ao template padrão
+  - Melhorando README
