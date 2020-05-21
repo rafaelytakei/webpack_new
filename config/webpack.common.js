@@ -98,6 +98,15 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
+      /**
+       * Html
+       *
+       * Use html-loader to identify references inside html files.
+       */
+      {
+        test: /\.html$/i,
+        loader: 'html-loader'
+      },
 
       /**
        * Styles
