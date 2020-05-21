@@ -26,6 +26,10 @@
 @import 'pages/validations';
 
 /// Vendors
+$fa-font-path: '~@fortawesome/fontawesome-pro/webfonts'; 
+@import '~@fortawesome/fontawesome-pro/scss/fontawesome';
+@import '~@fortawesome/fontawesome-pro/scss/solid';
+@import '~@fortawesome/fontawesome-pro/scss/regular';
 @import '~bootstrap/scss/bootstrap';
 
 /// Vendors override

@@ -11,12 +11,8 @@ import {getURLParameters} from './modules/functions';
 
 $(() => {
     buildNavBar();
-    console.log('dsada');
+    console.log('Hello!');
     console.log(getURLParameters());
-    $('body').append('<section id="content-section" class="container-fluid"></section>');
-    $('body').attr('id', 'index-page');
-    $('#content-section').append('<div id="main-image-div"></div>');
     $('#main-image-div').append('<img id="index-logo" src="'+WebpackLogo+'"></img>');
-    $('#content-section').append('<div id="text-div" class="row mb-4"></div>');
     $('#text-div').append('<h1 class="col-12">~ '+ HelloWorld() +' ~</h1>');
 });
