@@ -200,3 +200,9 @@ Ao executar `npm start`:
   - Add plugin `html-loader` para carregar imagens direto do .html
   - Add font-awesome-pro ao template padrão
   - Melhorando README
+  - Deixando alguns usos de importação de imagem e uso dos templates .html mais claros no template
+- 22/05
+  - Updating dependencies
+    - `copy-webpack-plugin` v5.1.1 -> v6.0.1 - Houve uma mudança necessária nas opções do plugin
+    - `terser-webpack-plugin` v2.3.6 -> v3.0.1 - Sem modificações necessárias no código
+    - `eslint` v6.8.0 -> v7.0.0 - Sem modificações necessárias no código
