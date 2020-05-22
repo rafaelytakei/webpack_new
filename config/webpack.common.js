@@ -18,13 +18,15 @@ let plugins = [
      *
      * Copies files from target to destination folder.
      */
-    new CopyWebpackPlugin([
-      {
+    new CopyWebpackPlugin({
+      patterns: [{
         from: paths.static,
         to: 'assets',
-        ignore: ['*.DS_Store'],
-      },
-    ]),
+        globOptions: {
+          ignore: ['*.DS_Store'],
+        }
+      }]
+    }),
 ];
 
 /* Building entries */
