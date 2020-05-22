@@ -73,7 +73,7 @@ for (const file of jsFiles) {
             favicon: paths.static + '/favicon.png',
             template: paths.src + '/template.html', // template file
             filename: path.basename(folderFile, '.js') + '.html', // output file
-            /* chunks: [path.basename(folderFile, '.js')], */
+            chunks: [path.basename(folderFile, '.js')],
           }
           /* Função para checar se há um template para a entry, se não houver as opções serão padrão */
           let templatePath2 = paths.src + '/' + file + '/' + path.basename(folderFile, '.js') + '.html';
@@ -81,7 +81,7 @@ for (const file of jsFiles) {
             htmlOptions = {
               template: paths.src + '/' + file + '/' + path.basename(folderFile, '.js') + '.html',
               filename: path.basename(folderFile, '.js') + '.html', // output file
-              /* chunks: [file + '/' + path.basename(folderFile, '.js')], */
+              chunks: [path.basename(folderFile, '.js')],
             }
           }
           subPlugins.push(

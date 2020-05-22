@@ -17,6 +17,9 @@ export default function buildNavBar() {
         '<li class="nav-item">',
         '<a class="nav-link" href="animations.html">Animations</a>',
         '</li>',
+        '<li class="nav-item">',
+        '<a class="nav-link" href="./checkout/">Checkout</a>',
+        '</li>',
         '</ul>',
         '</div>',
     ].join('');
