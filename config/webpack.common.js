@@ -22,11 +22,15 @@ let plugins = [
    *
    * Copies files from target to destination folder.
    */
-  new CopyWebpackPlugin([{
-    from: paths.static,
-    to: 'assets',
-    ignore: ['*.DS_Store'],
-  }, ]),
+  new CopyWebpackPlugin({
+    patterns: [{
+      from: paths.static,
+      to: 'assets',
+      globOptions: {
+        ignore: ['*.DS_Store'],
+      }
+    }]
+  }),
 ];
 let subPlugins = [
   /**
@@ -34,20 +38,24 @@ let subPlugins = [
    *
    * Removes/cleans build folders and unused assets when rebuilding.
    */
-   new CleanWebpackPlugin({
-     verbose: true,
-   }),
+  new CleanWebpackPlugin({
+    verbose: true,
+  }),
 
-   /**
-    * CopyWebpackPlugin
-    *
-    * Copies files from target to destination folder.
-    */
-   new CopyWebpackPlugin([{
-     from: paths.static,
-     to: 'assets',
-     ignore: ['*.DS_Store'],
-   }, ]),
+  /**
+   * CopyWebpackPlugin
+   *
+   * Copies files from target to destination folder.
+   */
+  new CopyWebpackPlugin({
+    patterns: [{
+      from: paths.static,
+      to: 'assets',
+      globOptions: {
+        ignore: ['*.DS_Store'],
+      }
+    }]
+  }),
 ];
 /* Building entries */
 let jsFiles = fs.readdirSync(paths.src + '/assets/js');
@@ -106,232 +114,232 @@ for (const file of jsFiles) {
   }
 }
 module.exports = [{
-  /**
-   * Entry
-   *
-   * The first place Webpack looks to start building the bundle.
-   */
-  entry: entries,
+    /**
+     * Entry
+     *
+     * The first place Webpack looks to start building the bundle.
+     */
+    entry: entries,
 
-  /**
-   * Output
-   *
-   * Where Webpack outputs the assets and bundles.
-   */
-  output: {
-    path: paths.build,
-    filename: '[name].bundle.js',
-    publicPath: '/',
-  },
+    /**
+     * Output
+     *
+     * Where Webpack outputs the assets and bundles.
+     */
+    output: {
+      path: paths.build,
+      filename: '[name].bundle.js',
+      publicPath: '/',
+    },
 
-  /**
-   * Plugins
-   *
-   * Customize the Webpack build process.
-   */
-  plugins: plugins,
+    /**
+     * Plugins
+     *
+     * Customize the Webpack build process.
+     */
+    plugins: plugins,
 
-  /**
-   * Module
-   *
-   * Determine how modules within the project are treated.
-   */
-  module: {
-    rules: [
-      /**
-       * JavaScript
-       *
-       * Use Babel to transpile JavaScript files.
-       */
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
-      },
-      /**
-       * Html
-       *
-       * Use html-loader to identify paths from html files.
-       */
-      {
-        test: /\.html$/i,
-        loader: 'html-loader',
-      },
-      /**
-       * Styles
-       *
-       * Inject CSS into the head with source maps.
-       */
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              importLoaders: 1
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-        ],
-      },
-
-      /**
-       * Images
-       *
-       * Copy image files to build folder.
-       */
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg|webp|svg)$/i,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-          context: 'src', // prevent display of src/ in filename
+    /**
+     * Module
+     *
+     * Determine how modules within the project are treated.
+     */
+    module: {
+      rules: [
+        /**
+         * JavaScript
+         *
+         * Use Babel to transpile JavaScript files.
+         */
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: ['babel-loader', 'eslint-loader'],
         },
-      },
-
-      /**
-       * Fonts
-       *
-       * Inline font files.
-       */
-      {
-        test: /\.(woff(2)?|eot|ttf|otf|)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-          name: '[path][name].[ext]',
-          context: 'src', // prevent display of src/ in filename
+        /**
+         * Html
+         *
+         * Use html-loader to identify paths from html files.
+         */
+        {
+          test: /\.html$/i,
+          loader: 'html-loader',
         },
-      },
-    ],
-  },
-},
-/* CHECKOUT */
-{
-  /**
-   * Entry
-   *
-   * The first place Webpack looks to start building the bundle.
-   */
-  entry: subEntries,
-
-  /**
-   * Output
-   *
-   * Where Webpack outputs the assets and bundles.
-   */
-  output: {
-    path: paths.checkout,
-    filename: '[name].bundle.js',
-    publicPath: '/checkout/',
-  },
-
-  /**
-   * Plugins
-   *
-   * Customize the Webpack build process.
-   */
-  plugins: subPlugins,
-
-  /**
-   * Module
-   *
-   * Determine how modules within the project are treated.
-   */
-  module: {
-    rules: [
-      /**
-       * JavaScript
-       *
-       * Use Babel to transpile JavaScript files.
-       */
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
-      },
-      /**
-       * Html
-       *
-       * Use html-loader to identify paths from html files.
-       */
-      {
-        test: /\.html$/i,
-        loader: 'html-loader',
-      },
-      /**
-       * Styles
-       *
-       * Inject CSS into the head with source maps.
-       */
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              importLoaders: 1
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-        ],
-      },
-
-      /**
-       * Images
-       *
-       * Copy image files to build folder.
-       */
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg|webp|svg)$/i,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-          context: 'src', // prevent display of src/ in filename
+        /**
+         * Styles
+         *
+         * Inject CSS into the head with source maps.
+         */
+        {
+          test: /\.(scss|css)$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                importLoaders: 1
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+          ],
         },
-      },
 
-      /**
-       * Fonts
-       *
-       * Inline font files.
-       */
-      {
-        test: /\.(woff(2)?|eot|ttf|otf|)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-          name: '[path][name].[ext]',
-          context: 'src', // prevent display of src/ in filename
+        /**
+         * Images
+         *
+         * Copy image files to build folder.
+         */
+        {
+          test: /\.(?:ico|gif|png|jpg|jpeg|webp|svg)$/i,
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
+            context: 'src', // prevent display of src/ in filename
+          },
         },
-      },
-    ],
+
+        /**
+         * Fonts
+         *
+         * Inline font files.
+         */
+        {
+          test: /\.(woff(2)?|eot|ttf|otf|)$/,
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: '[path][name].[ext]',
+            context: 'src', // prevent display of src/ in filename
+          },
+        },
+      ],
+    },
   },
-},
+  /* CHECKOUT */
+  {
+    /**
+     * Entry
+     *
+     * The first place Webpack looks to start building the bundle.
+     */
+    entry: subEntries,
+
+    /**
+     * Output
+     *
+     * Where Webpack outputs the assets and bundles.
+     */
+    output: {
+      path: paths.checkout,
+      filename: '[name].bundle.js',
+      publicPath: '/checkout/',
+    },
+
+    /**
+     * Plugins
+     *
+     * Customize the Webpack build process.
+     */
+    plugins: subPlugins,
+
+    /**
+     * Module
+     *
+     * Determine how modules within the project are treated.
+     */
+    module: {
+      rules: [
+        /**
+         * JavaScript
+         *
+         * Use Babel to transpile JavaScript files.
+         */
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: ['babel-loader', 'eslint-loader'],
+        },
+        /**
+         * Html
+         *
+         * Use html-loader to identify paths from html files.
+         */
+        {
+          test: /\.html$/i,
+          loader: 'html-loader',
+        },
+        /**
+         * Styles
+         *
+         * Inject CSS into the head with source maps.
+         */
+        {
+          test: /\.(scss|css)$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                importLoaders: 1
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+          ],
+        },
+
+        /**
+         * Images
+         *
+         * Copy image files to build folder.
+         */
+        {
+          test: /\.(?:ico|gif|png|jpg|jpeg|webp|svg)$/i,
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
+            context: 'src', // prevent display of src/ in filename
+          },
+        },
+
+        /**
+         * Fonts
+         *
+         * Inline font files.
+         */
+        {
+          test: /\.(woff(2)?|eot|ttf|otf|)$/,
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: '[path][name].[ext]',
+            context: 'src', // prevent display of src/ in filename
+          },
+        },
+      ],
+    },
+  },
 ]
