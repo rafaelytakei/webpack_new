@@ -6,7 +6,9 @@
   "author": "Rafael Takei <rafael@suthub.com>",
   "license": "UNLICENSED",
   "scripts": {
+    "prestart": "node config/build-deleter.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
+    "prebuild": "node config/build-deleter.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js"
   },
   "keywords": [
@@ -33,6 +35,7 @@
     "file-loader": "^6.0.0",
     "fs": "0.0.1-security",
     "glob": "^7.1.6",
+    "html-loader": "^1.1.0",
     "html-replace-webpack-plugin": "^2.5.6",
     "html-webpack-plugin": "^4.3.0",
     "html-webpack-plugin-assets-fix": "^1.0.2",

@@ -18,5 +18,6 @@ $(() => {
     $('#content-section').append('<div id="main-image-div"></div>');
     $('#main-image-div').append('<img id="index-logo" src="'+WebpackLogo+'"></img>');
     $('#content-section').append('<div id="text-div" class="row mb-4"></div>');
-    $('#text-div').append('<h1 class="col-12">~ '+ HelloWorld() +' ~</h1>');
+    $('#text-div').append('<h1 class="col-12 d-flex justify-content-center">~ '+ HelloWorld() +' ~</h1>');
+    $('#text-div').append('<h2 class="col-12 d-flex justify-content-center">This is the checkout page</h2>');
 });

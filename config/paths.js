@@ -5,4 +5,5 @@ module.exports = {
   build: path.resolve(__dirname, '../dist'), // Build Files
   static: path.resolve(__dirname, '../public'), // Static Files to be copied to Build
   js: path.resolve(__dirname, '../src/assets/js'), // JS Files
+  checkout: path.resolve(__dirname, '../dist/checkout'), // Checkout
 }
