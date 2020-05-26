@@ -7,54 +7,13 @@
 */
 
 import '../styles/main.scss'
+
 import 'popper.js';
 import 'bootstrap';
 import $ from 'jquery';
-import buildNavBar from './modules/navbar';
-import tsfv from 'tsfv';
-import Cleave from 'cleave.js';
-import './modules/customValidators';
+
+import {initPage} from './modules/initPage';
 
 $(() => {
-    const nameRegex =  /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    const visaRegex = /^4[0-9]{12}(?:[0-9]{3})?$/;
-    const masterRegex = /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/;
-
-    let cartaoCleave = new Cleave('#cartao', {
-        creditCard: true
-    })
-    let cpfCleave = new Cleave('#cpf', {
-        delimiters: ['.','.','-'],
-        blocks: [3, 3, 3, 2],
-        numericOnly: true
-    })
-
-    buildNavBar();
-    $('#validate').on('click', function() {
-        $('#erros-list').empty();
-        let nome = $('#nome').val();
-        let email = $('#email').val();
-        let cartao = cartaoCleave.getRawValue();
-        let cpf= $('#cpf').val();
-
-        console.log(cartao);
-        let nameValidation = tsfv.pattern(nameRegex).test(nome);
-        let emailValidation = tsfv.pattern(emailRegex).test(email);
-        let cartaoValidation = tsfv.anyOf(tsfv.pattern(visaRegex), tsfv.pattern(masterRegex)).test(cartao);
-        let cpfValidation = tsfv.cpf().test(cpf);
-        if(!nameValidation) {
-            $('#erros-list').append('<li>Nome Inválido</li>');
-        }
-        if(!emailValidation) {
-            $('#erros-list').append('<li>Email Inválido</li>');
-        }
-        if(!cartaoValidation) {
-            $('#erros-list').append('<li>Cartão Inválido</li>');
-        }
-        if(!cpfValidation) {
-            $('#erros-list').append('<li>CPF Inválido</li>');
-        }
-        
-    })
+    initPage();
 });

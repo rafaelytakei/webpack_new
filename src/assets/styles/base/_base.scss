@@ -5,6 +5,13 @@ html {
     text-align: center;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+main {
+  min-width: 100%;
+}
 p {
     font-size: $paragraph-font-size;
 }

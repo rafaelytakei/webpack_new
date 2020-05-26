@@ -121,7 +121,7 @@ module.exports = {
           'style-loader',
           { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
           /* { loader: 'resolve-url-loader', options: {}}, */
-          { loader: 'postcss-loader', options: { sourceMap: true } },
+          /* { loader: 'postcss-loader', options: { sourceMap: true } }, */
           { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
