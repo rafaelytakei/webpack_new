@@ -98,6 +98,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
+        include: paths.js,
         use: ['babel-loader', 'eslint-loader'],
       },
       /**
@@ -107,7 +108,8 @@ module.exports = {
        */
       {
         test: /\.html$/i,
-        loader: 'html-loader'
+        loader: 'html-loader',
+        include: paths.src,
       },
 
       /**
@@ -120,8 +122,8 @@ module.exports = {
         use: [
           'style-loader',
           { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
-          { loader: 'resolve-url-loader', options: {}},
-          { loader: 'postcss-loader', options: { sourceMap: true } },
+          { loader: 'resolve-url-loader'},
+          { loader: 'postcss-loader',  options: { sourceMap: true } },
           { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },

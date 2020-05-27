@@ -16,7 +16,7 @@ module.exports = merge(common, {
    *
    * Control how source maps are generated.
    */
-  devtool: 'inline-source-map',
+  devtool: 'eval-cheap-module-source-map',
 
   /**
    * DevServer
