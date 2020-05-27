@@ -12,7 +12,6 @@ let plugins = [
      * Removes/cleans build folders and unused assets when rebuilding.
      */
     new CleanWebpackPlugin(),
-
     /**
      * CopyWebpackPlugin
      *
@@ -99,7 +98,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         include: paths.js,
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['thread-loader', 'babel-loader', 'eslint-loader'],
       },
       /**
        * Html
@@ -122,9 +121,10 @@ module.exports = {
         use: [
           'style-loader',
           { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
-          { loader: 'resolve-url-loader'},
           { loader: 'postcss-loader',  options: { sourceMap: true } },
+          { loader: 'resolve-url-loader'},
           { loader: 'sass-loader', options: { sourceMap: true } },
+          
         ],
       },
 

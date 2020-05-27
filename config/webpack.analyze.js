@@ -8,6 +8,7 @@ const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
 const zlib = require('zlib');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
@@ -44,6 +45,7 @@ module.exports = merge(common, {
       minRatio: 0.8,
       deleteOriginalAssets: false,
     }),
+    new BundleAnalyzerPlugin()
   ],
   module: {
     rules: [
