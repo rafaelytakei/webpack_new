@@ -1,6 +1,6 @@
 #index-page {
     #content-section {
         @include page-with-centered-img;
-        background-image: url('../images/webpack-logo.svg');
+        background-image: url('../../images/webpack-logo.svg');
     }
 }
