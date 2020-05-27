@@ -4,6 +4,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const fs = require('fs');
 const path = require('path');
+const threadLoader = require('thread-loader');
+
+threadLoader.warmup({
+}, [
+  'babel-loader',
+  'sass-loader',
+]);
 /* Building plugins */
 let plugins = [
   /**
@@ -124,7 +131,6 @@ module.exports = {
           { loader: 'postcss-loader',  options: { sourceMap: true } },
           { loader: 'resolve-url-loader'},
           { loader: 'sass-loader', options: { sourceMap: true } },
-          
         ],
       },
 

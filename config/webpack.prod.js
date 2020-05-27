@@ -8,6 +8,7 @@ const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
 const zlib = require('zlib');
+
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
@@ -59,7 +60,7 @@ module.exports = merge(common, {
           },
           'postcss-loader',
           'resolve-url-loader',
-          { loader: 'sass-loader', options: { sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true } }
         ],
       },
     ],
