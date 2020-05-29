@@ -206,3 +206,11 @@ Ao executar `npm start`:
 - 27/05
   - Updating dependencies
   - Add `resolve-url-loader`, que faz com que paths dentro de .scss sejam relativos ao próprio documento, ao invés de relativo ao main.scss
+
+  ## Problemas encontrados 
+
+  - Select2
+    - Problemas ao mudar language para 'pt-BR'. Workaround: Instalar o jquery globalmente. Não óptimo, pois adicionaria o jquery até em bundles onde não seria necessário, mas visto que em um projeto usando jquery já o utiliza em todas as páginas, não é problemático;
+    - Problemas no build devido ao PurgeCSS, que não consegue identificar as classes utilizadas pelo select2 e acaba removendo elas da build de produção. Workaround: colocar `/select2/` na whitelist do PurgeCSS. Ideal seria a lib se adaptar melhor para uso de módulos.
+  - Toastr
+    - Problemas no build devido ao PurgeCSS, que não consegue identificar as classes utilizadas pelo toastr e acaba removendo elas da build de produção. Workaround: colocar `/toast/` na whitelist do PurgeCSS. Ideal seria a lib se adaptar melhor para uso de módulos.
