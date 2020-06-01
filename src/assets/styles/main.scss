@@ -1,3 +1,10 @@
+/// Vendors first so they are overridden by custom styles
+$fa-font-path: '~@fortawesome/fontawesome-pro/webfonts'; 
+@import '~@fortawesome/fontawesome-pro/scss/fontawesome';
+@import '~@fortawesome/fontawesome-pro/scss/solid';
+@import '~@fortawesome/fontawesome-pro/scss/regular';
+@import '~bootstrap/scss/bootstrap';
+
 /// Importing sanitize.css for normalization
 @import '~sanitize.css/sanitize.css';
 @import '~sanitize.css/forms.css';
@@ -29,13 +36,6 @@
 @import 'pages/index';
 @import 'pages/animations';
 @import 'pages/validations';
-
-/// Vendors
-$fa-font-path: '~@fortawesome/fontawesome-pro/webfonts'; 
-@import '~@fortawesome/fontawesome-pro/scss/fontawesome';
-@import '~@fortawesome/fontawesome-pro/scss/solid';
-@import '~@fortawesome/fontawesome-pro/scss/regular';
-@import '~bootstrap/scss/bootstrap';
 
 /// Vendors override
 @import 'vendors-extensions/bootstrap';
