@@ -1,3 +1,8 @@
+/// Importing sanitize.css for normalization
+@import '~sanitize.css/sanitize.css';
+@import '~sanitize.css/forms.css';
+@import '~sanitize.css/typography.css';
+
 /// Abstracts
 @import 'abstracts/variables';
 @import 'abstracts/functions';
