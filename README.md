@@ -407,9 +407,9 @@ Ao executar `npm start`:
 ### CSS problems in production
 
 - Problema provavelmente causado pelo PurgeCSS não conseguindo identificar o uso de algumas libs. Workaround: Adicionar o prefixo utilizado nas classes da lib no whitelistPatterns do PurgeCSS, em `config/webpack.prod.js`. [Documentação sobre whitelist](https://purgecss.com/whitelisting.html#specific-selectors)
-## Changelog
 
-  
+
+## Changelog
 
 - 21/05
 
@@ -433,4 +433,8 @@ Ao executar `npm start`:
 
 - 01/06
    - Updating dependencies
+
    - Adding common problems to README
+
+- 02/06
+  - Adicionando aliases ao template, para facilitar paths.

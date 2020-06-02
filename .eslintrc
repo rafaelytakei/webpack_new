@@ -1,4 +1,11 @@
 {
   "parser": "babel-eslint",
-  "rules": {}
+	"extends": ["esnext/style-guide", "plugin:import/errors", "plugin:import/warnings"],
+	"settings": {
+		"import/resolver": {
+			"webpack": {
+				"config": "config/webpack.common.js"
+			}
+		}
+	}
 }
