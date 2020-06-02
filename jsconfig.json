@@ -3,11 +3,11 @@
     "baseUrl": "./",
     "allowSyntheticDefaultImports": false,
     "paths": {
-      "Images/*": ["./src/assets/images/*"],
-      "Styles/*": ["./src/assets/styles/*"],
-      "Fonts/*": ["./src/assets/fonts/*"],
-      "Modules/*": ["./src/assets/js/modules/*"],
-      "Js/*": ["./src/assets/js/*"]
+      "Images/*": ["src/assets/images/*"],
+      "Styles/*": ["src/assets/styles/*"],
+      "Fonts/*": ["src/assets/fonts/*"],
+      "Modules/*": ["src/assets/js/modules/*"],
+      "Js/*": ["src/assets/js/*"]
     }
   },
   "exclude": ["node_modules"]

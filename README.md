@@ -438,3 +438,4 @@ Ao executar `npm start`:
 
 - 02/06
   - Adicionando aliases ao template, para facilitar paths.
+	- Testes usando algumas extensions do VSCode + ESLint
