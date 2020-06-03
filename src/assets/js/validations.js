@@ -14,6 +14,7 @@ import 'Modules/customValidators'
 import $ from 'jquery'
 import Cleave from 'cleave.js'
 import buildNavBar from 'Modules/navbar'
+import inputmask from 'inputmask'
 import tsfv from 'tsfv'
 
 $(() => {
