@@ -7,7 +7,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob')
 const CompressionPlugin = require('compression-webpack-plugin')
-const zlib = require('zlib')
 
 module.exports = merge(common, {
 	mode: 'production',

@@ -1,6 +1,6 @@
 import 'Styles/main.scss'
-import 'popper.js'
 import 'bootstrap'
+import 'popper.js'
 
 import $ from 'jquery'
 import SutHubLogo from 'Images/suthub-logo.png'
