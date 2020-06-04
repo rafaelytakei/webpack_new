@@ -1,12 +1,12 @@
-const paths = require('./paths')
-const merge = require('webpack-merge')
-const common = require('./webpack.common.js')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserJSPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const PurgecssPlugin = require('purgecss-webpack-plugin')
-const glob = require('glob')
-const CompressionPlugin = require('compression-webpack-plugin')
+const paths = require('./paths');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const glob = require('glob');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = merge(common, {
 	mode: 'production',
@@ -83,18 +83,27 @@ module.exports = merge(common, {
 		// This breaks apart commonly shared deps (react, semantic ui, etc) into one shared bundle. React, etc
 		// won't change as often as the app code, so this chunk can be cached separately from app code.
 		splitChunks: {
-			cacheGroups: {
-				vendor: {
-					test: /[\\/]node_modules[\\/]/,
-					name: 'vendors',
-					chunks: 'all',
-				},
-			},
-		},
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+            // npm package names are URL-safe, but some servers don't like @ symbols
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
+    },
 	},
 	performance: {
 		hints: false,
 		maxEntrypointSize: 512000,
 		maxAssetSize: 512000,
 	},
-})
+});

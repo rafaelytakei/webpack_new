@@ -20,6 +20,7 @@
 		"no-useless-escape": "off",
 		"eqeqeq": "off",
 		"no-unused-vars": "warn",
-		"semi":["error", "always"]
+		"semi":["error", "always"],
+		"import/no-commonjs": "off"
 	}
 }

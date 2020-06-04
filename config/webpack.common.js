@@ -6,6 +6,10 @@ const fs = require('fs');
 const path = require('path');
 const threadLoader = require('thread-loader');
 
+const transpileDependencies = [
+	'tsfv',
+];
+
 threadLoader.warmup({
 }, [
 	'babel-loader',
@@ -103,8 +107,8 @@ module.exports = {
        */
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
-				include: paths.js,
+				exclude: new RegExp(`node_modules/(?!(${transpileDependencies.join('|')})/).*`),
+				include: [paths.js, path.resolve(__dirname, '../node_modules/tsfv')],
 				use: [ 'thread-loader', 'babel-loader', 'eslint-loader' ],
 			},
 			/**
@@ -186,6 +190,7 @@ module.exports = {
 			Js: path.resolve(__dirname, '../src/assets/js/'),
 			Fonts: path.resolve(__dirname, '../src/assets/fonts/'),
 			Modules: path.resolve(__dirname, '../src/assets/js/modules/'),
+			'jquery': require.resolve('jquery'),
 		},
 	},
 };

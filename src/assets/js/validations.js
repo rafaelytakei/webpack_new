@@ -12,15 +12,14 @@
 import 'popper.js';
 import 'bootstrap';
 import 'slim-select/src/slim-select/slimselect.scss';
-import 'Modules/customValidators';
 import 'Styles/main.scss';
+import 'parsleyjs';
 
 import $ from 'jquery';
 import Cleave from 'cleave.js';
 import Inputmask from 'inputmask';
 import SlimSelect from 'slim-select';
 import buildNavBar from 'Modules/navbar';
-import tsfv from 'tsfv';
 
 $(() => {
 	const nameRegex = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
@@ -51,31 +50,9 @@ $(() => {
 		}
 		let nome = document.getElementById('nome');
 		nome = nome.value;
-		const email = $('#email').val();
-		const cartao = cartaoCleave.getRawValue();
-		const cpf = cpfMask.unmaskedvalue();
-		const esporte = esporteSelect.selected();
-		console.log(esporte);
-		const nameValidation = tsfv.pattern(nameRegex).test(nome);
-		const emailValidation = tsfv.pattern(emailRegex).test(email);
-		const cartaoValidation = tsfv
-			.anyOf(tsfv.pattern(visaRegex), tsfv.pattern(masterRegex))
-			.test(cartao);
-		const cpfValidation = tsfv.cpf().test(cpf);
-		const esporteValidation = tsfv.not.null().test(esporte);
-		if (!nameValidation)
-			$('#erros-list').append(`<li>Nome Inválido</li>`);
+		const nomeValidation = $('#nome').parsley();
 
-		if (!emailValidation)
-			$('#erros-list').append('<li>Email Inválido</li>');
-
-		if (!cartaoValidation)
-			$('#erros-list').append('<li>Cartão Inválido</li>');
-
-		if (!cpfValidation)
-			$('#erros-list').append('<li>CPF Inválido</li>');
-		
-		if(!esporteValidation)
-			$('#erros-list').append(`<li>Esporte Inválido</li>`);
+		const validateButton = document.getElementById('validate');
+		console.log(nomeValidation.isValid());
 	});
 });

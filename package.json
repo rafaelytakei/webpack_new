@@ -68,8 +68,8 @@
     "cleave.js": "^1.6.0",
     "inputmask": "^5.0.3",
     "jquery": "^3.5.1",
+    "parsleyjs": "^2.9.2",
     "popper.js": "^1.16.1",
-    "slim-select": "^1.26.0",
-    "tsfv": "^1.0.1"
+    "slim-select": "^1.26.0"
   }
 }
