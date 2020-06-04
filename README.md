@@ -300,7 +300,9 @@ Ao executar `npm start`:
 
 -  **[Cleave.js](https://nosir.github.io/cleave.js/)**: Boa lib para complementar a inputmask, ou substituí-la em alguns casos, notávelmente para mask de cartão de crédito.
 
-  
+### Select
+
+- **[SlimSelect](https://slimselectjs.com/)**: Lib bem completa e customizável, acredito ser uma alternativa superior ao select2, por não ter dependências e ser mais leve, mantendo as funcionalidades.
 
 ### Animation
 
@@ -340,35 +342,22 @@ Ao executar `npm start`:
 
 ## Libs já instaladas
 
-  
 
 -  **[jQuery](https://jquery.com/)**
 
-  
-
 -  **[Bootstrap](https://getbootstrap.com/)**
-
-  
 
 -  **[PopperJS](https://popper.js.org/)** - Dependência do Bootstrap
 
-  
-
 -  **[Font Awesome Pro](https://fontawesome.com/)**
-
-  
 
 -  **[TSFV](https://github.com/trevorr/tsfv)**
 
-  
-
 -  **[Cleave.js](https://nosir.github.io/cleave.js/)**
-
-  
 
 -  **[Anime.js](https://animejs.com/)**
 
-  
+-  **[SlimSelect](https://slimselectjs.com/)**
 
 ## Adaptando um projeto já existente ao webpack
 
@@ -439,3 +428,7 @@ Ao executar `npm start`:
 - 02/06
   - Adicionando aliases ao template, para facilitar paths.
 	- Testes usando algumas extensions do VSCode + ESLint
+
+- 03/06
+	- Adicionando lib inputmask como padrão
+	- Adicionando lib slim-select como padrão

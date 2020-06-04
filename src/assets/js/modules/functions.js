@@ -7,7 +7,7 @@
 export const getURLParameters = (url = location.search) =>
 	(url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
 		(a, v) => (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1), a), {}
-	)
+	);
 
 /**
  * Transforma form em um objeto
@@ -22,7 +22,7 @@ export const formToObject = form =>
 			...acc,
 			[key]: value,
 		}), {}
-	)
+	);
 
 /**
  * Realiza um 'Deep Clone' de um objeto
@@ -30,15 +30,15 @@ export const formToObject = form =>
  * @param {*} obj - Objeto a ser clonado
  * @returns {object} - Clone do objeto
  */
-const deepClone = obj => {
-	if (obj === null) return null
-	let clone = Object.assign({}, obj)
+export const deepClone = obj => {
+	if (obj === null) return null;
+	const clone = Object.assign({}, obj);
 	Object.keys(clone).forEach(
 		key => clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
-	)
+	);
 	return Array.isArray(obj) && obj.length
 		? (clone.length = obj.length) && Array.from(clone)
 		: Array.isArray(obj)
 			? Array.from(obj)
-			: clone
-}
+			: clone;
+};

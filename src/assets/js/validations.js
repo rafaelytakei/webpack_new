@@ -4,60 +4,78 @@
    - v8n: Funciona, porém sem definições de typescript. Não cria problemas, porém cria warnings na compilação.
 
    No momento estou testando a lib https://github.com/trevorr/tsfv, que é baseada na v8n com algumas funcionalidades extras.
+
+	Para masking, as opções testadas até o momento são inputmask e cleave.js. Creio que inputmask cubra a grande maioria das necessiades,
+	mas o Cleave parece melhor para lidar especificamente com números de CC.
 */
 
-import 'Styles/main.scss'
-import 'popper.js'
-import 'bootstrap'
-import 'Modules/customValidators'
+import 'popper.js';
+import 'bootstrap';
+import 'slim-select/src/slim-select/slimselect.scss';
+import 'Modules/customValidators';
+import 'Styles/main.scss';
 
-import $ from 'jquery'
-import Cleave from 'cleave.js'
-import buildNavBar from 'Modules/navbar'
-import inputmask from 'inputmask'
-import tsfv from 'tsfv'
+import $ from 'jquery';
+import Cleave from 'cleave.js';
+import Inputmask from 'inputmask';
+import SlimSelect from 'slim-select';
+import buildNavBar from 'Modules/navbar';
+import tsfv from 'tsfv';
 
 $(() => {
-	const nameRegex = /^([\w]{3,})+\s+([\w\s]{3,})+$/i
-	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-	const visaRegex = /^4[0-9]{12}(?:[0-9]{3})?$/
-	const masterRegex = /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/
+	const nameRegex = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
+	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	const visaRegex = /^4[0-9]{12}(?:[0-9]{3})?$/;
+	const masterRegex = /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/;
 
-	let cartaoCleave = new Cleave('#cartao', {
+	const cartaoCleave = new Cleave('#cartao', {
 		creditCard: true,
-	})
-	let cpfCleave = new Cleave('#cpf', {
-		delimiters: [ '.', '.', '-' ],
-		blocks: [ 3, 3, 3, 2 ],
-		numericOnly: true,
-	})
+	});
 
-	buildNavBar()
-	$('#validate').on('click', function () {
-		$('#erros-list').empty()
-		let nome = $('#nome').val()
-		let email = $('#email').val()
-		let cartao = cartaoCleave.getRawValue()
-		let cpf = $('#cpf').val()
+	const cpfMask = new Inputmask({
+		mask: '999.999.999-99',
+		jitmasking: true,
+	}).mask('#cpf');
 
-		console.log(cartao)
-		let nameValidation = tsfv.pattern(nameRegex).test(nome)
-		let emailValidation = tsfv.pattern(emailRegex).test(email)
-		let cartaoValidation = tsfv
+	const esporteSelect = new SlimSelect({
+		select: '#esporte',
+		placeholder: 'Escolha seu esporte',
+		searchPlaceholder: 'Busca',
+	});
+	buildNavBar();
+	const validateButton = document.getElementById('validate');
+	validateButton.addEventListener('click', () => {
+		const errosList = document.getElementById('erros-list');
+		while(errosList.firstChild) {
+			errosList.removeChild(errosList.firstChild);
+		}
+		let nome = document.getElementById('nome');
+		nome = nome.value;
+		const email = $('#email').val();
+		const cartao = cartaoCleave.getRawValue();
+		const cpf = cpfMask.unmaskedvalue();
+		const esporte = esporteSelect.selected();
+		console.log(esporte);
+		const nameValidation = tsfv.pattern(nameRegex).test(nome);
+		const emailValidation = tsfv.pattern(emailRegex).test(email);
+		const cartaoValidation = tsfv
 			.anyOf(tsfv.pattern(visaRegex), tsfv.pattern(masterRegex))
-			.test(cartao)
-		let cpfValidation = tsfv.cpf().test(cpf)
+			.test(cartao);
+		const cpfValidation = tsfv.cpf().test(cpf);
+		const esporteValidation = tsfv.not.null().test(esporte);
 		if (!nameValidation)
-			$('#erros-list').append('<li>Nome Inválido</li>')
+			$('#erros-list').append(`<li>Nome Inválido</li>`);
 
 		if (!emailValidation)
-			$('#erros-list').append('<li>Email Inválido</li>')
+			$('#erros-list').append('<li>Email Inválido</li>');
 
 		if (!cartaoValidation)
-			$('#erros-list').append('<li>Cartão Inválido</li>')
+			$('#erros-list').append('<li>Cartão Inválido</li>');
 
 		if (!cpfValidation)
-			$('#erros-list').append('<li>CPF Inválido</li>')
-
-	})
-})
+			$('#erros-list').append('<li>CPF Inválido</li>');
+		
+		if(!esporteValidation)
+			$('#erros-list').append(`<li>Esporte Inválido</li>`);
+	});
+});

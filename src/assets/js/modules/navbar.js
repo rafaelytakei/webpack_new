@@ -1,7 +1,7 @@
-import $ from 'jquery'
+import $ from 'jquery';
 
 export default function buildNavBar () {
-	$('body').prepend('<nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-light"></nav>')
+	$('body').prepend('<nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-light"></nav>');
 	const navBarContent = [
 		'<a class="navbar-brand" href="index.html">Webpack Suthub</a>',
 		'<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">',
@@ -20,6 +20,6 @@ export default function buildNavBar () {
 		'</li>',
 		'</ul>',
 		'</div>',
-	].join('')
-	$('#nav-bar').append(navBarContent)
+	].join('');
+	$('#nav-bar').append(navBarContent);
 }

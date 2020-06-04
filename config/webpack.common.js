@@ -1,18 +1,18 @@
-const paths = require('./paths')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const fs = require('fs')
-const path = require('path')
-const threadLoader = require('thread-loader')
+const paths = require('./paths');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const fs = require('fs');
+const path = require('path');
+const threadLoader = require('thread-loader');
 
 threadLoader.warmup({
 }, [
 	'babel-loader',
 	'sass-loader',
-])
+]);
 /* Building plugins */
-let plugins = [
+const plugins = [
 	/**
      * CleanWebpackPlugin
      *
@@ -33,33 +33,33 @@ let plugins = [
 			},
 		} ],
 	}),
-]
+];
 
 /* Building entries */
-let jsFiles = fs.readdirSync(paths.src + '/assets/js')
-let entries = {}
+const jsFiles = fs.readdirSync(paths.src + '/assets/js');
+const entries = {};
 for (const file of jsFiles)
 	if (path.extname(file) == '.js') {
-		entries[path.basename(file, '.js')] = './src/assets/js/' + path.basename(file)
+		entries[path.basename(file, '.js')] = './src/assets/js/' + path.basename(file);
 		let htmlOptions = {
 			title: 'Placeholder Title',
 			favicon: paths.static + '/favicon.png',
 			template: paths.src + '/template.html', // template file
 			filename: path.basename(file, '.js') + '.html', // output file
 			chunks: [ path.basename(file, '.js') ],
-		}
+		};
 		/* Função para checar se há um template para a entry, se não houver as opções serão padrão */
-		let templatePath = paths.src + '/' + path.basename(file, '.js') + '.html'
+		const templatePath = paths.src + '/' + path.basename(file, '.js') + '.html';
 		if (fs.existsSync(templatePath))
 			htmlOptions = {
 				template: paths.src + '/' + path.basename(file, '.js') + '.html',
 				filename: path.basename(file, '.js') + '.html', // output file
 				chunks: [ path.basename(file, '.js') ],
-			}
+			};
 
 		plugins.push(
 			new HtmlWebpackPlugin(htmlOptions)
-		)
+		);
 	}
 
 
@@ -87,7 +87,7 @@ module.exports = {
    *
    * Customize the Webpack build process.
    */
-	plugins: plugins,
+	plugins,
 
 	/**
    * Module
@@ -153,6 +153,16 @@ module.exports = {
 			},
 
 			/**
+       * SVG's
+       *
+       * SVG's are copied inline
+       */
+			/* {
+				test: /\.svg$/,
+        loader: 'svg-inline-loader'
+			}, */
+
+			/**
        * Fonts
        *
        * Inline font files.
@@ -178,4 +188,4 @@ module.exports = {
 			Modules: path.resolve(__dirname, '../src/assets/js/modules/'),
 		},
 	},
-}
+};

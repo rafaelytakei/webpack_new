@@ -35,6 +35,7 @@ module.exports = merge(common, {
 			paths: glob.sync(`${ paths.src }/**/*`, {
 				nodir: true,
 			}),
+			whitelistPatterns: [ /ss/ ],
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
