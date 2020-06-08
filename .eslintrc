@@ -21,6 +21,7 @@
 		"eqeqeq": "off",
 		"no-unused-vars": "warn",
 		"semi":["error", "always"],
-		"import/no-commonjs": "off"
+		"import/no-commonjs": "off",
+		"import/no-nodejs-modules": "off"
 	}
 }

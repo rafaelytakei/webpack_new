@@ -13,7 +13,6 @@ const transpileDependencies = [
 threadLoader.warmup({
 }, [
 	'babel-loader',
-	'sass-loader',
 ]);
 /* Building plugins */
 const plugins = [
@@ -108,7 +107,6 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: new RegExp(`node_modules/(?!(${transpileDependencies.join('|')})/).*`),
-				include: [paths.js, path.resolve(__dirname, '../node_modules/tsfv')],
 				use: [ 'thread-loader', 'babel-loader', 'eslint-loader' ],
 			},
 			/**
