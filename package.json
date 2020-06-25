@@ -4,7 +4,7 @@
   "description": "Webpack 4 Boilerplate Suthub",
   "main": "index.js",
   "author": "Rafael Takei <rafael@suthub.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",

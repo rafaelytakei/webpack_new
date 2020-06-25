@@ -48,9 +48,9 @@ Transforma 'next-gen' JS em uma versão mais antiga para ser compatível com tod
 
 ```
 
-let word1 = "Lorem";
+const word1 = "Lorem";
 
-let word2 = "Ipsum";
+const word2 = "Ipsum";
 
 let word3 = "This is a ${word1} ${word2} example!";
 
@@ -133,8 +133,10 @@ A ser adicionado posteriormente
 2. Instalar **[Node.js](https://nodejs.org/en/)**
 
   
+3. Instalar **[Yarn](https://yarnpkg.com/)** utilizando o comando `npm install -g yarn`
 
-3. Executar no terminal dentro da pasta do repositório clonado: `npm install`. Este comando vai instalar todas as dependências do projeto, declaradas no `package.json`
+
+4. Executar no terminal dentro da pasta do repositório clonado: `yarn install`. Este comando vai instalar todas as dependências do projeto, declaradas no `package.json`
 
   
 
@@ -146,7 +148,7 @@ A ser adicionado posteriormente
 
   
 
-Para inicializar o servidor de desenvolvimento, deve ser executado o comando `npm start`. O servidor de desenvolvimento poderá ser acessado via `localhost:8080`. Plugin utilizado: [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+Para inicializar o servidor de desenvolvimento, deve ser executado o comando `yarn start`. O servidor de desenvolvimento poderá ser acessado via `localhost:8080`. Plugin utilizado: [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 
   
 
@@ -154,7 +156,7 @@ Para inicializar o servidor de desenvolvimento, deve ser executado o comando `np
 
   
 
-Para gerar uma build de produção, deve ser executado o comando `npm run build`. Os arquivos gerados ficarão armazenados na pasta `/dist`.
+Para gerar uma build de produção, deve ser executado o comando `yarn build`. Os arquivos gerados ficarão armazenados na pasta `/dist`.
 
   
 
@@ -212,15 +214,15 @@ Durante o desenvolvimento, tudo deverá ser feito na pasta `/src`, que está div
 
   
 
-Pacotes podem ser adicionados utilizando o Node Package Manager (npm). Por exemplo:
+Pacotes podem ser adicionados utilizando o Yarn. Anteriormente era utilizado o `npm`, mas por questões de performance, foi substituido pelo `yarn`. Os pacotes são os mesmos existentes no `npm`. Por exemplo, para instalar o pacote jquery:
 
   
 
-`npm install --save jquery`
+`yarn add jquery`
 
   
 
-(Substituir a flag `--save` por `--save-dev` caso for uma dependência apenas para desenvolvimento).
+(Adicionar a flag `--dev` ou `-D` caso for uma dependência apenas para desenvolvimento).
 
   
 
@@ -228,7 +230,7 @@ Pacotes podem ser adicionados utilizando o Node Package Manager (npm). Por exemp
 
   
 
-Ao executar `npm start`:
+Ao executar `yarn start`:
 
   
 
@@ -270,23 +272,7 @@ Ao executar `npm start`:
 
   
 
--  **~~[ParsleyJS](https://parsleyjs.org/)~~**: Sem suporte até o momento para modules/typescript, tentei alguns workarounds para fazer funcionar, mas sem sucesso até o momento. Vide **[issue](https://github.com/guillaumepotier/Parsley.js/issues/1243)**
-
-  
-
-  
-
--  **[Validate.js](https://validatejs.org/)**: Possibilidade. Aparentemente bem completa, porém achei que complica desnecessariamente em algumas validações simples.
-
-  
-
-  
-
--  **[v8n](https://imbrn.github.io/v8n/)**: Possibilidade, porém sem definições prontas de typescript, o que faz vários warnings serem criados na compilação, mas não afeta sua usabilidade
-
-  
-
--  **[TSFV](https://github.com/trevorr/tsfv)**: Preferível. Baseada na lib v8n, mas com typings e algumas funcionalidades extras, além de ser razoavelmente simples de usar.
+-  **[ParsleyJS](https://parsleyjs.org/)**: Lib bem completa de validações, mas com alguns downsides. Primeiramente, requer o jQuery instalado globalmente, o que afeta features do webpack como o [tree shaking](https://webpack.js.org/guides/tree-shaking/). Ainda sobre isso, ela depende inteiramente do JQuery, o que pode ser um empecilho caso eventualmente haja uma transição para um JS Framework (Angular, React, Vue, etc)
 
   
 
@@ -343,15 +329,17 @@ Ao executar `npm start`:
 ## Libs já instaladas
 
 
--  **[jQuery](https://jquery.com/)**
+-  **[jQuery](https://jquery.com/)** - Talvez gere problemas caso eventualmente haja a transição para o uso de um framework JS.
 
--  **[Bootstrap](https://getbootstrap.com/)**
+-  **[Bootstrap](https://getbootstrap.com/)** - Atualmente está na versão 4.x, mas sua versão v5.x já está em suas primeiras versões de teste. Entre suas mudanças mais notáveis, não terá mais o jQuery como dependência e **não suportará mais o Internet Explorer**.
 
--  **[PopperJS](https://popper.js.org/)** - Dependência do Bootstrap
+-  **[PopperJS](https://popper.js.org/)** - Dependência do Bootstrap. Está sendo usada uma versão legado v1.x, porque a atual v2.x não suporta IE11.
 
--  **[Font Awesome Pro](https://fontawesome.com/)**
+-  **[Font Awesome Pro](https://fontawesome.com/)** - Sugiro caso possível baixar cada um dos assets que serão utilizados, ao invés de usar a lib inteira, que é notávelmente pesada. Por hora, a lib está instalada.
 
--  **[TSFV](https://github.com/trevorr/tsfv)**
+-  **[ParsleyJS](https://parsleyjs.org/)**
+
+- **[Inputmask](https://github.com/RobinHerbots/Inputmask)**
 
 -  **[Cleave.js](https://nosir.github.io/cleave.js/)**
 
@@ -387,13 +375,13 @@ Ao executar `npm start`:
   - [Compatibilidade com PurgeCSS](#css-problems-in-production)
   
 
-## Common Problems
+## Problemas comuns (?)
 
-### Importing images
+### Importando imagens
 
 - Imagens podem ser adicionadas no próprio html, usando `<img src="assets/images/img_test.png"/>` normalmente. No entanto, para adicionar essa mesma imagem dentro do JS, é necessário importá-la primeiro usando `import myImage from '../images/img_test.png'` (path relativo ao JS) e então `myImage` passará a armazenar o path correto para a imagem. Para finalmente adicionar a imagem, precisa é necessário substituir o path por `myImage`. Exemplo (dentro do JS): `'<img src="'+myImage+'">'`
 
-### CSS problems in production
+### CSS quebrado em produção
 
 - Problema provavelmente causado pelo PurgeCSS não conseguindo identificar o uso de algumas libs. Workaround: Adicionar o prefixo utilizado nas classes da lib no whitelistPatterns do PurgeCSS, em `config/webpack.prod.js`. [Documentação sobre whitelist](https://purgecss.com/whitelisting.html#specific-selectors)
 

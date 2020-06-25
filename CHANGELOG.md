@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `yarn devspeed` -> Faz uma build de desenvolvimento com um log do tempo tomado por cada loader
 	- `yarn buildspeed` -> Faz uma build de produção com um log do tempo tomado por cada loader
 - Teste de cacheDirectory no babel-loader para melhorar performance de rebuild.
+- Suporte à lib ParsleyJS.
 ### Changed
 - Vide mudança do `npm` para `yarn`,  as chamadas para os scripts para build mudaram.
   - `npm start` -> `yarn dev` (mudado de start para dev porque faz mais sentido)
