@@ -1,6 +1,7 @@
 {
-  "parser": "babel-eslint",
-	"extends": ["esnext", "plugin:import/errors", "plugin:import/warnings"],
+	"parser": "babel-eslint",
+  "extends": ["airbnb", "prettier"],
+	"plugins": ["prettier"],
 	"settings": {
 		"import/resolver": {
 			"webpack": {
@@ -8,20 +9,16 @@
 			}
 		}
 	},
-	"env": {
-		"es6": true,
-		"commonjs": true,
-		"node": true,
-		"browser": true
-	},
-	"rules": {
-		"babel/generator-star-spacing": "off",
+  "rules": {
+		"prettier/prettier": ["error"],
+		"import/no-extraneous-dependencies": "off",
+		"no-restricted-syntax": "off",
+		"import/no-unresolved": "off",
 		"no-console": "off",
-		"no-useless-escape": "off",
-		"eqeqeq": "off",
-		"no-unused-vars": "warn",
-		"semi":["error", "always"],
-		"import/no-commonjs": "off",
-		"import/no-nodejs-modules": "off"
+		"no-new": "off"
+	},
+	"env": {
+		"browser": true,
+		"node": true
 	}
 }

@@ -4,16 +4,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
-const threadLoader = require('thread-loader');
-
-const transpileDependencies = [
-	'tsfv',
-];
-
-threadLoader.warmup({
-}, [
-	'babel-loader',
-]);
 /* Building plugins */
 const plugins = [
 	/**
@@ -106,8 +96,13 @@ module.exports = {
        */
 			{
 				test: /\.js$/,
-				exclude: new RegExp(`node_modules/(?!(${transpileDependencies.join('|')})/).*`),
-				use: [ 'thread-loader', 'babel-loader', 'eslint-loader' ],
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						cacheDirectory: true
+					}
+				},
 			},
 			/**
        * Html
@@ -131,9 +126,7 @@ module.exports = {
 					'style-loader',
 					{ loader: 'css-loader',
 						options: { sourceMap: true,
-							importLoaders: 1 } },
-					{ loader: 'postcss-loader',
-						options: { sourceMap: true } },
+							importLoaders: 2 } },
 					{ loader: 'resolve-url-loader' },
 					{ loader: 'sass-loader',
 						options: { sourceMap: true } },

@@ -4,11 +4,16 @@ import 'popper.js';
 import 'bootstrap';
 import 'Styles/main.scss';
 
-/* import $ from 'jquery'; */
 import HelloWorld from 'Modules/HelloWorld';
 import WebpackLogo from 'Images/webpack-logo.svg';
 import buildNavBar from 'Modules/navbar';
 import { getURLParameters } from 'Modules/functions';
+
+/* import $ from 'jquery'; */
+
+
+
+
 
 window.addEventListener('DOMContentLoaded', () => {
 	buildNavBar();
