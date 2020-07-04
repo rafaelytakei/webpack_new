@@ -1,28 +1,28 @@
-const paths = require('./paths');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const paths = require('./paths');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
 	/**
-   * Mode
-   *
-   * Set the mode to development or production.
-   */
+	 * Mode
+	 *
+	 * Set the mode to development or production.
+	 */
 	mode: 'development',
 
 	/**
-   * Devtool
-   *
-   * Control how source maps are generated.
-   */
+	 * Devtool
+	 *
+	 * Control how source maps are generated.
+	 */
 	devtool: 'eval-cheap-module-source-map',
 
 	/**
-   * DevServer
-   *
-   * Spin up a server for quick development.
-   */
+	 * DevServer
+	 *
+	 * Spin up a server for quick development.
+	 */
 	devServer: {
 		historyApiFallback: true,
 		contentBase: paths.build,
@@ -35,10 +35,10 @@ module.exports = merge(common, {
 
 	plugins: [
 		/**
-     * HotModuleReplacementPlugin
-     *
-     * Only update what has changed.
-     */
+		 * HotModuleReplacementPlugin
+		 *
+		 * Only update what has changed.
+		 */
 		new webpack.HotModuleReplacementPlugin(),
 	],
 });

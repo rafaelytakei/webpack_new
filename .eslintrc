@@ -1,6 +1,6 @@
 {
 	"parser": "babel-eslint",
-  "extends": ["airbnb", "prettier"],
+	"extends": ["airbnb", "prettier"],
 	"plugins": ["prettier"],
 	"settings": {
 		"import/resolver": {
@@ -9,13 +9,15 @@
 			}
 		}
 	},
-  "rules": {
+	"rules": {
 		"prettier/prettier": ["error"],
 		"import/no-extraneous-dependencies": "off",
 		"no-restricted-syntax": "off",
 		"import/no-unresolved": "off",
 		"no-console": "off",
-		"no-new": "off"
+		"no-new": "off",
+		"no-var": "error",
+		"no-unused-vars": "warn"
 	},
 	"env": {
 		"browser": true,

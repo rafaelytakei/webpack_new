@@ -1,44 +1,38 @@
-/**
- * Retorna os parâmetros de uma URL. Caso não seja definida uma URL, usará a URL da página atual.
- *
- * @param {*} url [url = location.search]- URL a ser lida
- * @returns {object} - Objeto com os parâmetros
- */
-export const getURLParameters = (url = location.search) =>
-	(url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
-		(a, v) => (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1), a), {}
-	);
+import 'parsleyjs';
 
-/**
- * Transforma form em um objeto
- *
- * @param {*} form - Elemento do form a ser transformado em objeto
- * @example formToObject(document.querySelector('#form')); => { email: 'test@email.com', name: 'Test Name' }
- * @returns {object} - Objeto com os elementos do form
- */
-export const formToObject = form =>
-	Array.from(new FormData(form)).reduce(
-		(acc, [ key, value ]) => ({
-			...acc,
-			[key]: value,
-		}), {}
-	);
+import $ from 'jquery';
 
-/**
- * Realiza um 'Deep Clone' de um objeto
+export /**
+ * Lê o valor de todos os campos input/select dentro de um seletor, e armazena em um objeto
  *
- * @param {*} obj - Objeto a ser clonado
- * @returns {object} - Clone do objeto
+ * @param {String} formElement - String com um seletor para um elemento a ser lido, por exemplo, '#myForm'
+ * @returns {Object} - Objeto contendo os dados lidos
  */
-export const deepClone = obj => {
-	if (obj === null) return null;
-	const clone = Object.assign({}, obj);
-	Object.keys(clone).forEach(
-		key => clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
-	);
-	return Array.isArray(obj) && obj.length
-		? (clone.length = obj.length) && Array.from(clone)
-		: Array.isArray(obj)
-			? Array.from(obj)
-			: clone;
+const getFormValues = (formElement) => {
+	const formObject = {};
+	$(`${formElement} .form-control, ${formElement} select`).each(function () {
+		let value = $(this).val();
+		if ($(this).prop('tagName').toLowerCase() === 'input') {
+			value = value.trim();
+		}
+		formObject[$(this).attr('id')] = value;
+	});
+	return formObject;
+};
+
+export /**
+ * Valida todos os campos input/select dentro de um seletor usando o parsley
+ *
+ * @param {String} formElement - String com um seletor para um elemento a ser analisado, por exemplo, '#myForm'
+ * @returns {Boolean} - True caso todos os campos sejam válidos
+ */
+const validateForm = (formElement) => {
+	let validation = true;
+	$(`${formElement} .form-control, ${formElement} select`).each(function () {
+		$(this).parsley().validate();
+		if (!$(this).parsley().isValid()) {
+			validation = false;
+		}
+	});
+	return validation;
 };

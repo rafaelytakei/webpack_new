@@ -22,21 +22,16 @@ import SlimSelect from 'slim-select';
 import buildNavBar from 'Modules/navbar';
 
 $(() => {
-	const nameRegex = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
-	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	const visaRegex = /^4[0-9]{12}(?:[0-9]{3})?$/;
-	const masterRegex = /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/;
-
-	const cartaoCleave = new Cleave('#cartao', {
+	new Cleave('#cartao', {
 		creditCard: true,
 	});
 
-	const cpfMask = new Inputmask({
+	new Inputmask({
 		mask: '999.999.999-99',
 		jitmasking: true,
 	}).mask('#cpf');
 
-	const esporteSelect = new SlimSelect({
+	new SlimSelect({
 		select: '#esporte',
 		placeholder: 'Escolha seu esporte',
 		searchPlaceholder: 'Busca',
@@ -45,14 +40,10 @@ $(() => {
 	const validateButton = document.getElementById('validate');
 	validateButton.addEventListener('click', () => {
 		const errosList = document.getElementById('erros-list');
-		while(errosList.firstChild) {
+		while (errosList.firstChild) {
 			errosList.removeChild(errosList.firstChild);
 		}
-		let nome = document.getElementById('nome');
-		nome = nome.value;
 		const nomeValidation = $('#nome').parsley();
-
-		const validateButton = document.getElementById('validate');
 		console.log(nomeValidation.isValid());
 	});
 });

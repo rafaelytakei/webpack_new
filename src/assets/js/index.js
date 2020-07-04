@@ -11,18 +11,13 @@ import { getURLParameters } from 'Modules/functions';
 
 /* import $ from 'jquery'; */
 
-
-
-
-
 window.addEventListener('DOMContentLoaded', () => {
 	buildNavBar();
 	console.log('Hello!');
 	console.log(getURLParameters());
-	
+
 	const mainImageDiv = document.getElementById('main-image-div');
-	
-	const mainImage =  document.createElement('img');
+	const mainImage = document.createElement('img');
 	mainImage.src = WebpackLogo;
 	mainImage.id = 'index-logo';
 	mainImageDiv.appendChild(mainImage);
@@ -30,6 +25,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	const textDiv = document.getElementById('text-div');
 	const text = document.createElement('h1');
 	text.classList.add('col-12');
-	text.textContent = `~ ${ HelloWorld() } ~`;
+	text.textContent = `~ ${HelloWorld()} ~`;
 	textDiv.appendChild(text);
 });

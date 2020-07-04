@@ -6,12 +6,9 @@
 	"recommendations": [
 		"esbenp.prettier-vscode",
 		"dbaeumer.vscode-eslint",
-		"amatiasq.sort-imports",
 		"visualstudioexptteam.vscodeintellicode",
 		"joelday.docthis"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
-	"unwantedRecommendations": [
-		
-	]
+	"unwantedRecommendations": []
 }

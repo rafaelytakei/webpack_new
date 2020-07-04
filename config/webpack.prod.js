@@ -1,6 +1,4 @@
-const paths = require('./paths');
 const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
 /* const MiniCssExtractPlugin = require('mini-css-extract-plugin'); */
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -9,6 +7,8 @@ const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const path = require('path');
+const common = require('./webpack.common.js');
+const paths = require('./paths');
 
 module.exports = merge(common, {
 	mode: 'production',
@@ -20,17 +20,16 @@ module.exports = merge(common, {
 	},
 	plugins: [
 		/**
-			* Extract CSS Chunks Webpack Plugin
-			*	
-			* Testing as an alternative to MiniCssExtractPlugin
-			*/
-			new ExtractCssChunks({
-				// Options similar to the same options in webpackOptions.output
-				// both options are optional
-				filename: '[name].[contenthash].css',
-				chunkFilename: '[name].[contenthash].css',
-				
-			}),
+		 * Extract CSS Chunks Webpack Plugin
+		 *
+		 * Testing as an alternative to MiniCssExtractPlugin
+		 */
+		new ExtractCssChunks({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: '[name].[contenthash].css',
+			chunkFilename: '[name].[contenthash].css',
+		}),
 		/**
 		 * MiniCssExtractPlugin
 		 *
@@ -69,14 +68,13 @@ module.exports = merge(common, {
 				use: [
 					{
 						loader: ExtractCssChunks.loader,
-            options: {
-              publicPath: (resourcePath, context) => 
-                // publicPath is the relative path of the resource to the context
-                // e.g. for ./css/admin/main.css the publicPath will be ../../
-                // while for ./css/main.css the publicPath will be ../
-                 path.relative(path.dirname(resourcePath), context) + '/'
-              ,
-            },
+						options: {
+							publicPath: (resourcePath, context) =>
+								// publicPath is the relative path of the resource to the context
+								// e.g. for ./css/admin/main.css the publicPath will be ../../
+								// while for ./css/main.css the publicPath will be ../
+								`${path.relative(path.dirname(resourcePath), context)}/`,
+						},
 					},
 					{
 						loader: 'css-loader',
@@ -125,11 +123,11 @@ module.exports = merge(common, {
 					},
 				},
 				styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        }
+					name: 'styles',
+					test: /\.css$/,
+					chunks: 'all',
+					enforce: true,
+				},
 			},
 		},
 	},
