@@ -1,6 +1,6 @@
 /* Arquivo de configuração do webpack que só será executado em modo de desenvolvimento */
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const paths = require('./paths');
 const common = require('./webpack.common');

@@ -1,12 +1,11 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
-const path = require('path');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const common = require('./webpack.common');
 const paths = require('./paths');
 
@@ -23,20 +22,19 @@ module.exports = smp.wrap(
 		},
 		plugins: [
 			/**
-			 * Extract CSS Chunks Webpack Plugin
+			 * MiniCssExtractPlugin
 			 *
-			 * Testing as an alternative to MiniCssExtractPlugin
+			 * Extracts CSS into separate files.
+			 *
+			 * Note: style-loader is for development, MiniCssExtractPlugin is for production.
+			 * They cannot be used together in the same config.
 			 */
-			new ExtractCssChunks({
-				// Options similar to the same options in webpackOptions.output
-				// both options are optional
-				filename: '[name].[contenthash].css',
-				chunkFilename: '[name].[contenthash].css',
+			new MiniCssExtractPlugin({
+				filename: '../styles/[name].[contenthash].css',
+				chunkFilename: '[name].css',
 			}),
 			new PurgecssPlugin({
-				paths: glob.sync(`${paths.src}/**/*`, {
-					nodir: true,
-				}),
+				paths: glob.sync(`${paths.src}/**/*`, { nodir: true }),
 				whitelist: ['arrow-up', 'arrow-down'],
 				whitelistPatterns: [/ss/],
 				whitelistPatternsChildren: [/ss/],
@@ -59,30 +57,16 @@ module.exports = smp.wrap(
 				{
 					test: /\.(scss|css)$/,
 					use: [
-						{
-							loader: ExtractCssChunks.loader,
-							options: {
-								publicPath: (resourcePath, context) =>
-									// publicPath is the relative path of the resource to the context
-									// e.g. for ./css/admin/main.css the publicPath will be ../../
-									// while for ./css/main.css the publicPath will be ../
-									`${path.relative(path.dirname(resourcePath), context)}/`,
-							},
-						},
+						MiniCssExtractPlugin.loader,
 						{
 							loader: 'css-loader',
 							options: {
-								importLoaders: 1,
+								importLoaders: 3,
 							},
 						},
 						'postcss-loader',
 						'resolve-url-loader',
-						{
-							loader: 'sass-loader',
-							options: {
-								sourceMap: true,
-							},
-						},
+						{ loader: 'sass-loader', options: { sourceMap: true } },
 					],
 				},
 			],

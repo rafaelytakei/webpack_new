@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2020-06-03
+
+### Added
+
+- `mini-css-extract-plugin` adicionado como alternativa ao `extract-css-chunks-webpack-plugin` que foi removido
+
+- `sass` (DART SASS) adicionado como substituto do `node-sass`
+
+### Removed
+
+- `extract-css-chunks-webpack-plugin` removido, porque estava gerando paths relativos à imagens dentro de .css
+
+- `node-sass`, por recomendações da nova versão do `sass-loader`
+
+### Changed
+
+- Breaking changes ao atualizar as libs `sass-loader` (8.0.2 -> 9.0.2) e webpack-merge (4.2.2 -> 5.0.9)
+
 ## [1.0.0] - 2020-06-20
 
 ### Added
@@ -25,18 +43,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   - `yarn devspeed` -> Faz uma build de desenvolvimento com um log do tempo tomado por cada loader
 
-	- `yarn buildspeed` -> Faz uma build de produção com um log do tempo tomado por cada loader
+    ```
+
+    ```
+
 - Teste de cacheDirectory no babel-loader para melhorar performance de rebuild.
 
 - Suporte à lib ParsleyJS.
 
 ### Changed
 
-- Vide mudança do `npm` para `yarn`,  as chamadas para os scripts para build mudaram.
+- Vide mudança do `npm` para `yarn`, as chamadas para os scripts para build mudaram.
 
   - `npm start` -> `yarn dev` (mudado de start para dev porque faz mais sentido)
 
-	- `npm run build` -> `yarn build`
+    ```
+
+    ```
 
 ### Removed
 

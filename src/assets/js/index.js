@@ -7,14 +7,12 @@ import 'Styles/main.scss';
 import HelloWorld from 'Modules/HelloWorld';
 import WebpackLogo from 'Images/webpack-logo.svg';
 import buildNavBar from 'Modules/navbar';
-import { getURLParameters } from 'Modules/functions';
 
 /* import $ from 'jquery'; */
 
 window.addEventListener('DOMContentLoaded', () => {
 	buildNavBar();
 	console.log('Hello!');
-	console.log(getURLParameters());
 
 	const mainImageDiv = document.getElementById('main-image-div');
 	const mainImage = document.createElement('img');
