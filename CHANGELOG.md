@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2020-07-17
+
+### Changed
+
+- Update dependencies
+
+### Removed
+
+- `@fortawesome/fontawesome-pro` porque o custo-benefício (performance-wise) de ter a lib instalada é bem ruim. É melhor só usar SVG's on-demand.
+
 ## [2.0.0] - 2020-06-03
 
 ### Added
