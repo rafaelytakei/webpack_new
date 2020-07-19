@@ -1,10 +1,7 @@
-/// Vendors first so they are overridden by custom styles
+/// Custom CSS Reset
+@import 'base/reset';
 
-/// Importing sanitize.css for normalization
-@import '~sanitize.css/sanitize.css';
-@import '~sanitize.css/forms.css';
-@import '~sanitize.css/typography.css';
-
+/// Vendors first so they are overridden by custom styles, except for the reset
 @import '~bootstrap/scss/bootstrap';
 
 /// Abstracts
@@ -16,7 +13,6 @@
 /// Base
 @import 'base/templates';
 @import 'base/base';
-@import 'base/reset';
 @import 'base/typography';
 
 /// Layout
