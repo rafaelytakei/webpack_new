@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2020-07-19
+
+### Added
+
+- Branch `tailwindcss`, onde foi removido o uso do SASS/bootstrap/jquery e agora está sendo usado o framework `tailwindcss`.
+
+### Changed
+
+- Update dependencies
+
 ## [2.0.1] - 2020-07-17
 
 ### Changed
