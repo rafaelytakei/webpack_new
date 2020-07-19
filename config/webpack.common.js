@@ -122,15 +122,14 @@ module.exports = {
 			 * Inject CSS into the head with source maps.
 			 */
 			{
-				test: /\.(scss|css)$/,
+				test: /\.css$/,
 				use: [
 					'style-loader',
 					{
 						loader: 'css-loader',
-						options: { sourceMap: true, importLoaders: 2 },
+						options: { sourceMap: true, importLoaders: 1 },
 					},
-					{ loader: 'resolve-url-loader' },
-					{ loader: 'sass-loader', options: { sourceMap: true } },
+					'postcss-loader',
 				],
 			},
 
@@ -182,7 +181,6 @@ module.exports = {
 			Js: path.resolve(__dirname, '../src/assets/js/'),
 			Fonts: path.resolve(__dirname, '../src/assets/fonts/'),
 			Modules: path.resolve(__dirname, '../src/assets/js/modules/'),
-			jquery: require.resolve('jquery'),
 		},
 	},
 };

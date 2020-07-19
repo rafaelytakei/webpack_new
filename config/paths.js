@@ -6,5 +6,5 @@ module.exports = {
 	static: path.resolve(__dirname, '../public'), // Static Files to be copied to Build
 	js: path.resolve(__dirname, '../src/assets/js'), // JS Files
 	fonts: path.resolve(__dirname, '../src/assets/fonts'), // Fonts
-	vendors: path.resolve(__dirname, '../node_modules'), 	// Node Modules
+	vendors: path.resolve(__dirname, '../node_modules'), // Node Modules
 };

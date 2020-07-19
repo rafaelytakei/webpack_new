@@ -5,7 +5,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const common = require('./webpack.common.js');
 const paths = require('./paths');
 
@@ -18,18 +17,6 @@ module.exports = merge(common, {
 		filename: '[name].[contenthash].bundle.js',
 	},
 	plugins: [
-		/**
-		 * MiniCssExtractPlugin
-		 *
-		 * Extracts CSS into separate files.
-		 *
-		 * Note: style-loader is for development, MiniCssExtractPlugin is for production.
-		 * They cannot be used together in the same config.
-		 */
-		new MiniCssExtractPlugin({
-			filename: '../styles/[name].[contenthash].css',
-			chunkFilename: '[name].css',
-		}),
 		new PurgecssPlugin({
 			paths: glob.sync(`${paths.src}/**/*`, { nodir: true }),
 			whitelist: ['arrow-up', 'arrow-down'],
@@ -49,25 +36,6 @@ module.exports = merge(common, {
 			deleteOriginalAssets: false,
 		}),
 	],
-	module: {
-		rules: [
-			{
-				test: /\.(scss|css)$/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 3,
-						},
-					},
-					'postcss-loader',
-					'resolve-url-loader',
-					{ loader: 'sass-loader', options: { sourceMap: true } },
-				],
-			},
-		],
-	},
 
 	/**
 	 * Optimization

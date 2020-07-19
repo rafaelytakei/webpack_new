@@ -55,18 +55,16 @@ module.exports = smp.wrap(
 		module: {
 			rules: [
 				{
-					test: /\.(scss|css)$/,
+					test: /\.css$/,
 					use: [
 						MiniCssExtractPlugin.loader,
 						{
 							loader: 'css-loader',
 							options: {
-								importLoaders: 3,
+								importLoaders: 1,
 							},
 						},
 						'postcss-loader',
-						'resolve-url-loader',
-						{ loader: 'sass-loader', options: { sourceMap: true } },
 					],
 				},
 			],
