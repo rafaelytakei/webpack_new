@@ -1,8 +1,5 @@
-#index-page {
-    #content-section {
-        @include page-with-centered-img;
-        h1 {
-          color: red;
-        }
-    }
+body[data-page-name="index"] {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

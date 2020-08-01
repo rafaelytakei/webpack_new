@@ -183,7 +183,6 @@ module.exports = {
 			Js: path.resolve(__dirname, '../src/assets/js/'),
 			Fonts: path.resolve(__dirname, '../src/assets/fonts/'),
 			Modules: path.resolve(__dirname, '../src/assets/js/modules/'),
-			jquery: require.resolve('jquery'),
 		},
 	},
 };
