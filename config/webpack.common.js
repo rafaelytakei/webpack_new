@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
 const paths = require('./paths');
+
 /* Building plugins */
 const plugins = [
 	/**
