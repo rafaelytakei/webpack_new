@@ -1,25 +1,50 @@
-
 @mixin page-with-centered-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 80vh;
-    #main-image-div {
-        #index-logo {
-            width: 50vw;
-        }
-        #suthub-logo {
-            margin-right: 2rem;
-            width: 10vw;
-            opacity: 0;
-        }
-    }
-    #buttons-div {
-        width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 80vh;
+	#main-image-div {
+		#index-logo {
+			width: 50vw;
+		}
+		#suthub-logo {
+			margin-right: 2rem;
+			width: 10vw;
+			opacity: 0;
+		}
+	}
+	#buttons-div {
+		width: 100%;
 
-        button {
-            width: 100%;
-        }
-    }
+		button {
+			width: 100%;
+		}
+	}
+}
+
+@mixin breakpoint($class) {
+	@if $class==sm {
+		@media (min-width: 576px) {
+			@content;
+		}
+	} @else if $class==md {
+		@media (min-width: 768px) {
+			@content;
+		}
+	} @else if $class==lg {
+		@media (min-width: 992px) {
+			@content;
+		}
+	} @else if $class==xl {
+		@media (min-width: 1200px) {
+			@content;
+		}
+	} @else if $class == xxl {
+		@media (min-width: 2560px) {
+			@content;
+		}
+	} @else {
+		@warn "Breakpoint mixin supports: xs, sm, md, lg";
+	}
 }
