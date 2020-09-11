@@ -1,0 +1,23 @@
+#sidebar {
+	background-color: $darkest;
+	height: 100vh;
+	color: $lighter;
+	width: fit-content;
+	padding: 1em;
+
+	.sidebar__header {
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid $lighter;
+		padding-bottom: 1em;
+
+		img {
+			max-width: 5em;
+			margin-right: 0.5em;
+		}
+
+		h3 {
+			margin-bottom: 0;
+		}
+	}
+}

@@ -2,6 +2,8 @@ import 'parsleyjs';
 
 import $ from 'jquery';
 
+import ParsleyOptions from './parsleyOptions';
+
 export /**
  * Lê o valor de todos os campos input/select dentro de um seletor, e armazena em um objeto
  *
@@ -27,6 +29,34 @@ export /**
  * @returns {Boolean} - True caso todos os campos sejam válidos
  */
 const validateForm = (formElement) => {
+	$(`${formElement} .form-control, ${formElement} select`).each(function () {
+		$(this)
+			.parsley(ParsleyOptions.default)
+			.on('field:error', function (field) {
+				const errorMessage = field.getErrorsMessages();
+				$(this)[0]
+					.$element.parents('.form-group')
+					.find('.error-container')
+					.removeClass('d-none');
+				$(this)[0]
+					.$element.parents('.form-group')
+					.find('.error-validation')
+					.attr('title', errorMessage)
+					.attr('data-original-title', errorMessage);
+				$(this)[0]
+					.$element.parents('.form-group')
+					.find('.error-validation')
+					.popover({
+						container: 'body',
+					});
+			})
+			.on('field:success', function () {
+				$(this)[0]
+					.$element.parents('.form-group')
+					.find('.error-container')
+					.addClass('d-none');
+			});
+	});
 	let validation = true;
 	$(`${formElement} .form-control, ${formElement} select`).each(function () {
 		$(this).parsley().validate();

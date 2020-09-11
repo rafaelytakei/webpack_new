@@ -1,21 +1,134 @@
 import Inputmask from 'inputmask';
-import { Masks } from './Inputmasks';
-import apAnswers from '../json/ap.json';
-
+import SlimSelect from 'slim-select';
+import $ from 'jquery';
+import Masks from './Inputmasks';
+import 'parsleyjs';
+import 'popper.js';
+import 'bootstrap';
 /* Exemplo da qualicorp */
 const forms = {
-	ap: {
-		quote: {
+	user: {
+		cadastro: {
 			inputs: [
 				{
-					id: 'atividade',
-					type: 'question',
-					uuid: 'c374e7f9-c623-4d6c-942c-93401b0ea56b',
-					questionPlan: 450,
-					questionIndex: 0,
+					/* Identificador a ser usado no 'id' e 'name' do input */
+					id: 'name',
+					/* Tipo: input, select, button ou whitespace */
+					type: 'input',
+					/* Opções a serem mostradas caso type == 'select'. Não é necessário para input */
+					option: [
+						{
+							/* Texto da opção */
+							display: 'Exemplo 1',
+							/* Value da opção */
+							value: 'ex1',
+						},
+					],
+					/* Define se o campo é required ou não */
 					required: true,
-					label: 'Em qual atividade você se enquadra?',
+					/* Texto do label */
+					label: 'Nome Completo',
+					/* Classes a serem adicionadas no wrapper (div que agrupa label+input). Ex: 'col-12', 'col-md-6' */
 					groupExtraClasses: ['col-12'],
+					/* Atributos a serem adicionados ao input. Ex. Parsley stuff */
+					extraAttributes: [
+						{
+							/* Nome do atributo */
+							attribute: 'data-parsley-fullname',
+							/* Valor do atributo */
+							value: null,
+						},
+						{
+							attribute: 'data-parsley-required-message',
+							value: 'Campo Obrigatório',
+						},
+						{
+							attribute: 'data-parsley-fullname-message',
+							value: 'Nome deve ser completo',
+						},
+					],
+				},
+				{
+					id: 'cpf',
+					type: 'input',
+					required: true,
+					label: 'CPF',
+					groupExtraClasses: ['col-12'],
+					mask: 'cpf',
+					extraAttributes: [
+						{
+							attribute: 'data-parsley-cpf',
+							value: null,
+						},
+						{
+							attribute: 'data-parsley-required-message',
+							value: 'Campo Obrigatório',
+						},
+						{
+							attribute: 'data-parsley-cpf-message',
+							value: 'CPF Inválido',
+						},
+					],
+				},
+				{
+					id: 'email',
+					type: 'input',
+					required: true,
+					label: 'E-mail',
+					groupExtraClasses: ['col-12'],
+					extraAttributes: [
+						{
+							attribute: 'data-parsley-email',
+							value: null,
+						},
+						{
+							attribute: 'data-parsley-required-message',
+							value: 'Campo Obrigatório',
+						},
+						{
+							attribute: 'data-parsley-email-message',
+							value: 'Email Inválido',
+						},
+					],
+				},
+				{
+					id: 'marital_status',
+					type: 'select',
+					options: [
+						{
+							display: 'Solteiro(a)',
+							value: 'solteiro',
+						},
+						{
+							display: 'Casado(a)',
+							value: 'casado',
+						},
+						{
+							display: 'Viúvo(a)',
+							value: 'viuvo',
+						},
+						{
+							display: 'Separado(a)',
+							value: 'separado',
+						},
+						{
+							display: 'Desquisitado(a)',
+							value: 'desquisitado',
+						},
+						{
+							display: 'União Estável',
+							value: 'uniaoEstavel',
+						},
+						{
+							display: 'Outros',
+							value: 'outros',
+						},
+					],
+					required: true,
+					label: 'Estado Civil',
+					showSearch: false,
+					placeholder: '',
+					groupExtraClasses: ['col-12', 'col-sm-6', 'col-md-4'],
 					extraAttributes: [
 						{
 							attribute: 'data-parsley-required-message',
@@ -23,6 +136,29 @@ const forms = {
 						},
 					],
 				},
+				{
+					type: 'whitespace',
+					groupExtraClasses: ['col-lg-4', 'col-md-4', 'col-sm-6', 'col-12'],
+				},
+				{
+					id: 'collect-data',
+					type: 'button',
+					extraClasses: ['btn', 'sutbtn', 'submit-form'],
+					buttonText: 'Coletar dados do form',
+					groupExtraClasses: [
+						'col-12',
+						'col-sm-6',
+						'col-lg-4',
+						'd-flex',
+						'align-items-end',
+					],
+				},
+			],
+		},
+	},
+	ap: {
+		quote: {
+			inputs: [
 				{
 					id: 'insured_amount',
 					type: 'select',
@@ -149,7 +285,7 @@ const forms = {
 					type: 'input',
 					required: true,
 					label: 'Data de Nascimento',
-					groupExtraClasses: ['col-sm-6', 'col-md-4', 'col-12'],
+					groupExtraClasses: ['col-md-6', 'col-12'],
 					mask: 'date',
 					extraAttributes: [
 						{
@@ -720,7 +856,13 @@ const forms = {
 		},
 	},
 };
-export const buildForm = (targetElement, productName, formName) => {
+/**
+ * Constroi um form utilizando as informações contidas no module formBuilder.js
+ * @param {string} targetElement - Query String do elemento aonde o form deve ser construído.
+ * @param {string} productName - Nome do produto ou similar
+ * @param {string} formName - Nome do form sendo construído
+ */
+const buildForm = (targetElement, productName, formName) => {
 	let formData = null;
 	if (forms[productName][formName]) {
 		formData = forms[productName][formName];
@@ -742,18 +884,21 @@ export const buildForm = (targetElement, productName, formName) => {
 		) {
 			content.push(`<label for="${formInput.id}">${formInput.label}</label>`);
 		} else if (formInput.type === 'button') {
-			content.push(`<button class="`);
+			content.push(`<button id=${formInput.id} class="`);
 			for (const buttonClass of formInput.extraClasses) {
 				content.push(` ${buttonClass}`);
 			}
 			content.push(`" `);
-			for (const attribute of formInput.extraAttributes) {
-				content.push(
-					` ${attribute.attribute}${
-						attribute.value != null ? `="${attribute.value}"` : ''
-					}`
-				);
+			if (formInput.extraAttributes) {
+				for (const attribute of formInput.extraAttributes) {
+					content.push(
+						` ${attribute.attribute}${
+							attribute.value != null ? `="${attribute.value}"` : ''
+						}`
+					);
+				}
 			}
+
 			content.push(`>${formInput.buttonText}</button>`);
 		}
 
@@ -827,23 +972,6 @@ export const buildForm = (targetElement, productName, formName) => {
 				}
 				content.push('</select>');
 			}
-		} else if (formInput.type === 'question') {
-			content.push(
-				`<select id="${formInput.id}" name="${formInput.id}" data-uuid="${formInput.uuid}"`
-			);
-			for (const attribute of formInput.extraAttributes) {
-				content.push(
-					` ${attribute.attribute}${
-						attribute.value != null ? `="${attribute.value}"` : ''
-					}`
-				);
-			}
-			content.push(` ${formInput.required === true ? 'required' : ''}>`);
-			content.push(`<option data-placeholder="true"></option>`);
-			for (const option of apAnswers) {
-				content.push(`<option value="${option.value}">${option.text}</option>`);
-			}
-			content.push('</select>');
 		} else if (formInput.type === 'checkbox') {
 			const checkboxContent = [
 				`<div class="pretty p-default p-curve">`,
@@ -875,5 +1003,30 @@ export const buildForm = (targetElement, productName, formName) => {
 		if (formInput.mask) {
 			new Inputmask(Masks[formInput.mask]).mask(`#${formInput.id}`);
 		}
+		if (formInput.type === 'select') {
+			new SlimSelect({
+				select: document.querySelector(`${targetElement} #${formInput.id}`),
+				showSearch: formInput.showSearch,
+				placeholder: formInput.placeholder || ' ',
+				onChange: () => {
+					$(document.querySelector(`${targetElement} #${formInput.id}`))
+						.parsley()
+						.validate();
+				},
+			});
+		}
+	}
+	const textInputs = document.querySelectorAll(
+		`${targetElement} input[type="text"], ${targetElement} input[type="checkbox"]`
+	);
+	for (let i = 0; i < textInputs.length; i += 1) {
+		textInputs[i].addEventListener('keyup', (event) => {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				document.querySelector(`${targetElement} .submit-form`).click();
+			}
+		});
 	}
 };
+
+export default buildForm;

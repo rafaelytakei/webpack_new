@@ -2,3 +2,17 @@
 /// Buttons
 /// @group buttons
 ////
+
+.sutbtn {
+	width: 100%;
+	background-color: $dark;
+	color: white;
+	height: 50px;
+	font-size: 1.25em;
+	transition: background-color 0.2s ease-in-out;
+
+	&:hover {
+		background-color: $darkest;
+		color: white;
+	}
+}

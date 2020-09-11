@@ -1,4 +1,4 @@
-export const Masks = {
+const Masks = {
 	date: {
 		alias: 'datetime',
 		inputFormat: 'dd/mm/yyyy',
@@ -35,3 +35,5 @@ export const Masks = {
 		autoUnmask: true,
 	},
 };
+
+export default Masks;

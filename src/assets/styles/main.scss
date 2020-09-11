@@ -3,6 +3,7 @@
 
 /// Vendors first so they are overridden by custom styles, except for the reset
 @import '~bootstrap/scss/bootstrap';
+@import '~slim-select/src/slim-select/slimselect';
 
 /// Abstracts
 @import 'abstracts/variables';
@@ -16,20 +17,21 @@
 @import 'base/typography';
 
 /// Layout
-@import 'layout/navigation';
 @import 'layout/header';
 @import 'layout/footer';
-@import 'layout/forms';
 
 /// Components
 @import 'components/buttons';
 @import 'components/carousel';
+@import 'components/sidebar';
 
 /// Pages
 @import 'pages/index';
 @import 'pages/animations';
 @import 'pages/validations';
+@import 'pages/forms';
 
 /// Vendors override
 @import 'vendors-extensions/bootstrap';
 @import 'vendors-extensions/slim-select';
+@import 'vendors-extensions/parsleyjs';

@@ -18,7 +18,7 @@
 		"no-new": "off",
 		"no-var": "error",
 		"no-unused-vars": "warn",
-		"import/prefer-default-export": "off"
+		"func-names": "off"
 	},
 	"env": {
 		"browser": true,

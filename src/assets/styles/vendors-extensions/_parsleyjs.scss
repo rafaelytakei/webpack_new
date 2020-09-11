@@ -1,0 +1,63 @@
+.parsley-errors-list {
+	display: none;
+}
+
+.input-error~.error-validation {
+	display: block;
+}
+
+.error-validation {
+	height: 15px;
+	width: 15px;
+	position: absolute;
+	top: 45px;
+	right: 30px;
+	color: #F71C52;
+
+	&:hover {
+		color: #F71C52;
+		text-decoration: none;
+	}
+}
+
+select+.error-container {
+
+	.error-validation {
+		height: 15px;
+		width: 15px;
+		position: absolute;
+		top: 45px;
+		right: 50px;
+		color: #F71C52;
+
+		z-index: 2;
+
+		&:hover {
+			color: #F71C52;
+			text-decoration: none;
+		}
+	}
+}
+
+.error-msg {
+	display: none;
+}
+
+.popover-header {
+	background-color: white;
+}
+
+.popover-body {
+	display: none;
+	display: none;
+}
+
+.erro-termos {
+	display: none;
+	margin-left: 2px
+}
+
+.erro-termos svg {
+	color: #f71c52;
+	width: 15px
+}

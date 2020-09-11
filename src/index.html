@@ -2,20 +2,69 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <title>Index</title>
-
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="description" content="Webpack project boilerplate for Suthub" />
+	<title>Suthub</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 
 <body id="index-page">
-  <section id="content-section" class="container-fluid">
-    <div id="main-image-div"></div>
-    <div id="text-div" class="row mb-4">
-    </div>
-  </section>
+	<nav id="sidebar">
+		<div class="sidebar__header">
+			<img src="./assets/images/suthub-logo.png" alt="" />
+			<h3>Suthub Boilerplate</h3>
+		</div>
+		<div class="sidebar__item"></div>
+	</nav>
+	<main id="page-content">
+		<div id="main-header">
+			<h1>Boilerplate para projeto utilizando o bundler Webpack v4</h1>
+			<h2>Este boilerplate estará em constante WIP</h2>
+		</div>
+		<section id="libraries">
+			<h3>Libs já pré-instaladas no boilerplate</h3>
+			<ul>
+				<li>SlimSelect - Customização de selects</li>
+				<li>Bootstrap - Framework de CSS</li>
+				<li>Inputmask - Masking de inputs</li>
+			</ul>
+		</section>
+		<section id="changelog">
+			<h3>Changelog</h3>
+			<h5>10/09/2020</h5>
+			<ul>
+				<li>
+					Adicionando lib Axios para realizar comunicações com API, por lidar
+					melhor com casos do que a função 'fetch' dos browsers.
+				</li>
+			</ul>
+			<h5>09/09/2020</h5>
+			<ul>
+				<li>Início de um revamp no projeto</li>
+			</ul>
+		</section>
+		<section id="todo">
+			<h3>TODO</h3>
+			<ul>
+				<li>Criar exemplo de uso das libs pré-instaladas</li>
+				<li>
+					Agrupar funções utilizadas em outros projetos que podem ser úteis em
+					outros no functions.js
+				</li>
+				<li>Instalar Axios e preparar um Module para ele</li>
+				<li>
+					Agrupar componentes que podem ser reutilizáveis de outros projetos
+					em algum lugar neste boilerplate
+				</li>
+				<li>
+					Estilizar esta página que deverá ser usada de template para as
+					outras
+				</li>
+			</ul>
+		</section>
+	</main>
 </body>
 
 </html>
