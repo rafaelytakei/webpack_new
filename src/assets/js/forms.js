@@ -5,7 +5,8 @@ import initSidebar from 'Modules/sidebar';
 
 document.addEventListener('DOMContentLoaded', () => {
 	initSidebar(document.getElementById(`sidebar`));
-	/* Chamando função que constroi um form */
+	// Chamando função que constroi um form
+	// Essa função já inicializa os slimSelects/Inputmasks/Parsley quando necessário
 	buildForm('#example-form-1', 'user', 'cadastro');
 	document.getElementById('collect-data').addEventListener('click', () => {
 		if (validateForm('#example-form-1')) {

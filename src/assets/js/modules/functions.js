@@ -12,13 +12,18 @@ export /**
  */
 const getFormValues = (formElement) => {
 	const formObject = {};
-	$(`${formElement} .form-control, ${formElement} select`).each(function () {
-		let value = $(this).val();
-		if ($(this).prop('tagName').toLowerCase() === 'input') {
-			value = value.trim();
+	const formFields = document.querySelectorAll(
+		`${formElement} input[type="text"], ${formElement} select`
+	);
+	for (const formField of formFields) {
+		let value = null;
+		if (formField.tagName.toLowerCase() === 'select') {
+			value = formField.slim.selected();
+		} else if (formField.tagName.toLowerCase() === 'input') {
+			value = formField.value;
 		}
-		formObject[$(this).attr('id')] = value;
-	});
+		formObject[formField.id] = value;
+	}
 	return formObject;
 };
 
@@ -65,4 +70,35 @@ const validateForm = (formElement) => {
 		}
 	});
 	return validation;
+};
+
+/**
+ * Get the URL parameters
+ * source: https://css-tricks.com/snippets/javascript/get-url-variables/
+ * @param  {String} url The URL
+ * @return {Object}     The URL parameters
+ */
+export const getURLParams = (url = window.location.href) => {
+	const params = {};
+	const parser = document.createElement('a');
+	parser.href = url;
+	const query = parser.search.substring(1);
+	const vars = query.split('&');
+	for (let i = 0; i < vars.length; i += 1) {
+		const pair = vars[i].split('=');
+		params[pair[0]] = decodeURIComponent(pair[1]);
+	}
+	return params;
+};
+/**
+ * Formata uma string para BRL
+ * @param {String} value - String com o valor a ser formatado
+ * @return {String} String formatada em reais
+ */
+
+export const toReal = (value) => {
+	return value.toLocaleString('pt-br', {
+		style: 'currency',
+		currency: 'BRL',
+	});
 };
