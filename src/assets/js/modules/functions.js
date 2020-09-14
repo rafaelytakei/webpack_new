@@ -4,13 +4,13 @@ import $ from 'jquery';
 
 import ParsleyOptions from './parsleyOptions';
 
-export /**
+/**
  * Lê o valor de todos os campos input/select dentro de um seletor, e armazena em um objeto
  *
  * @param {String} formElement - String com um seletor para um elemento a ser lido, por exemplo, '#myForm'
  * @returns {Object} - Objeto contendo os dados lidos
  */
-const getFormValues = (formElement) => {
+export const getFormValues = (formElement) => {
 	const formObject = {};
 	const formFields = document.querySelectorAll(
 		`${formElement} input[type="text"], ${formElement} select`
@@ -27,13 +27,13 @@ const getFormValues = (formElement) => {
 	return formObject;
 };
 
-export /**
+/**
  * Valida todos os campos input/select dentro de um seletor usando o parsley
  *
  * @param {String} formElement - String com um seletor para um elemento a ser analisado, por exemplo, '#myForm'
  * @returns {Boolean} - True caso todos os campos sejam válidos
  */
-const validateForm = (formElement) => {
+export const validateForm = (formElement) => {
 	$(`${formElement} .form-control, ${formElement} select`).each(function () {
 		$(this)
 			.parsley(ParsleyOptions.default)
@@ -90,6 +90,7 @@ export const getURLParams = (url = window.location.href) => {
 	}
 	return params;
 };
+
 /**
  * Formata uma string para BRL
  * @param {String} value - String com o valor a ser formatado
@@ -97,8 +98,19 @@ export const getURLParams = (url = window.location.href) => {
  */
 
 export const toReal = (value) => {
-	return value.toLocaleString('pt-br', {
-		style: 'currency',
-		currency: 'BRL',
-	});
+	return value
+		.toLocaleString('pt-br', {
+			style: 'currency',
+			currency: 'BRL',
+		})
+		.substr(3);
+};
+/**
+ * Remove os caracteres não numéricos de uma string
+ * @param {String} value - String a ser manipulada
+ * @return {String} String com os caracteres não-numéricos removidos.
+ */
+
+export const removeNonNumerics = (value) => {
+	return value.replace(/\D/g, '');
 };

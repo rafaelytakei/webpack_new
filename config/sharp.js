@@ -33,10 +33,11 @@ function fromDir(startPath, filter) {
 
 fromDir(`${paths.src}/assets/images`, '.png');
 
-console.log(`Starting PNG to WebP conversion`);
+console.log(`Starting PNG to WebP conversion...`);
 for (const file of filesToConvert) {
 	const outputName = path.basename(file, '.png');
 	const outputPath = path.dirname(file);
 	sharp(file).webp().toFile(`${outputPath}/${outputName}.webp`);
 }
 console.log('PNG files have been converted to WebP successfully');
+console.log('Initializing bundling via webpack');
