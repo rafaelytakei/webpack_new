@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="x-ua-compatible" content="ie=edge" />
-		<meta name="description" content="Webpack project boilerplate for Suthub" />
-		<title>Suthub</title>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
 
-	<body id="index-page">
-		<nav id="sidebar"></nav>
-		<main id="page-content">
-			<div id="main-header">
-				<h1>Boilerplate para projeto utilizando o bundler Webpack v4</h1>
-				<h2>Este boilerplate estará em constante WIP</h2>
-			</div>
-			<section id="libraries">
-				<h3>Libs já pré-instaladas no boilerplate</h3>
-				<ul>
-					<li>SlimSelect - Customização de selects</li>
-					<li>Bootstrap - Framework de CSS</li>
-					<li>Inputmask - Masking de inputs</li>
-				</ul>
-			</section>
-			<section id="changelog">
-				<h3>Changelog</h3>
-				<h5>11/09/2020</h5>
-				<ul>
-					<li>
-						Criando uma função para buildar a sidebar, afim de tornar ela um
-						componente reutilizável.
-					</li>
-					<li>Configurando um module para lib Axios</li>
-					<li>Adicionando algumas funções reaproveitáveis em functions.js</li>
-					<li>Criando env.js</li>
-				</ul>
-				<h5>10/09/2020</h5>
-				<ul>
-					<li>
-						Adicionando lib Axios para realizar comunicações com API, por lidar
-						melhor com casos do que a função 'fetch' dos browsers.
-					</li>
-				</ul>
-				<h5>09/09/2020</h5>
-				<ul>
-					<li>Iníciando revamp no projeto</li>
-				</ul>
-			</section>
-			<section id="todo">
-				<h3>TODO</h3>
-				<ul>
-					<li>Criar exemplo de uso das libs pré-instaladas</li>
-					<li>
-						Agrupar componentes que podem ser reutilizáveis de outros projetos
-						em algum lugar neste boilerplate
-					</li>
-					<li>
-						Estilizar esta página que deverá ser usada de template para as
-						outras
-					</li>
-				</ul>
-			</section>
-		</main>
-	</body>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="description" content="Webpack project boilerplate for Suthub" />
+	<title>Suthub</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body id="index-page">
+	<nav id="sidebar"></nav>
+	<main id="page-content">
+		<div id="main-header">
+			<h1>Boilerplate para projeto utilizando o bundler Webpack v4</h1>
+			<h2>Este boilerplate estará em constante WIP</h2>
+		</div>
+		<section id="libraries">
+			<h3>Libs já pré-instaladas no boilerplate</h3>
+			<ul>
+				<li>SlimSelect - Customização de selects</li>
+				<li>Bootstrap - Framework de CSS</li>
+				<li>Inputmask - Masking de inputs</li>
+			</ul>
+		</section>
+		<section id="changelog">
+			<h3>Changelog</h3>
+			<h5>14/09/2020</h5>
+			<ul>
+				<li>
+					Documentando sutAPI.js
+				</li>
+				<li>
+					Trocando lib 'imagemin' por 'sharp' para conversão de imagens .png para .webp por ser mais customizável e
+					otimizada.
+				</li>
+			</ul>
+			<h5>11/09/2020</h5>
+			<ul>
+				<li>
+					Criando uma função para buildar a sidebar, afim de tornar ela um
+					componente reutilizável.
+				</li>
+				<li>Configurando um module para lib Axios</li>
+				<li>Adicionando algumas funções reaproveitáveis em functions.js</li>
+				<li>Criando env.js</li>
+			</ul>
+			<h5>10/09/2020</h5>
+			<ul>
+				<li>
+					Adicionando lib Axios para realizar comunicações com API, por lidar
+					melhor com casos do que a função 'fetch' dos browsers.
+				</li>
+			</ul>
+			<h5>09/09/2020</h5>
+			<ul>
+				<li>Iníciando revamp no projeto</li>
+			</ul>
+		</section>
+		<section id="todo">
+			<h3>TODO</h3>
+			<ul>
+				<li>Criar exemplo de uso das libs pré-instaladas</li>
+				<li>
+					Agrupar componentes que podem ser reutilizáveis de outros projetos
+					em algum lugar neste boilerplate
+				</li>
+				<li>
+					Estilizar esta página que deverá ser usada de template para as
+					outras
+				</li>
+			</ul>
+		</section>
+	</main>
+</body>
+
 </html>
