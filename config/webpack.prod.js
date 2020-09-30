@@ -32,9 +32,9 @@ module.exports = merge(common, {
 		}),
 		new PurgecssPlugin({
 			paths: glob.sync(`${paths.src}/**/*`, { nodir: true }),
-			whitelist: ['arrow-up', 'arrow-down'],
-			whitelistPatterns: [/ss/],
-			whitelistPatternsChildren: [/ss/],
+			safelist: {
+				greedy: [/ss/, /arrow/],
+			},
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
